@@ -1,0 +1,31 @@
+<div class="item">
+  <div  routerLink="/details/{{data.id}}" >
+
+    <img src="{{data.imagePath}}" alt="">
+    <div class="body">
+      <h4>{{data.englishName}}</h4>
+      <p>{{data.description}}</p>
+    </div>
+  </div>
+  <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
+
+    <button class="btn btn-success" *ngIf="!addbutton"  (click)="addbutton = true">Add To Cart</button>
+
+    <div class="d-flex w-50" *ngIf="addbutton">
+
+        <button class="btn btn-success" [disabled]="amount <= 1" (click)="subtractAmount()">-</button>
+        <input type="number" class="form-control" style="margin: 0 5px; min-width: 60px;" disabled [(ngModel)]="amount" >
+        <button class="btn btn-success" [disabled]="data.quantity<=amount"  (click)="addAmount()">+</button>
+        <button class="btn btn-success ml-5"  style="margin: 0 5px" (click)="add();addbutton = false; addToCart()">Add</button>
+
+    </div>
+    <!-- <div>
+      <button class="btn btn-success" [disabled]="amount == 1" (click)="subtractAmount()">-</button>
+      <input type="number" [(ngModel)]="amount" style="width:15%  ;  " disabled>
+      <button class="btn btn-success" [disabled]="data.quantity<=amount"  (click)="addAmount()">+</button>
+    </div> -->
+
+   <span>{{+data.price*amount}} L.E</span>
+  </div>
+</div>
+<!-- *ngIf="false" -->

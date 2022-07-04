@@ -1,0 +1,36 @@
+<!-- 3- Create a listing product page to display all products with columns (
+  Image,
+  English Name,
+  Arabic Name
+, Product Category
+, Vendor
+, Quantity
+, Unit Price)
+(DONE BACK)||| with paging (10) products per each page ‐ sorting by
+Product English name and grouping by Product Category -->
+
+
+
+<div class="box" >
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-5 col-sm-12">
+      <img src="{{data.imagePath}}" alt="sas">
+    </div>
+    <div class="col-md-7 col-sm-12">
+      <div class="info">
+        <ul class="list-unstyled">
+          <li><strong>English Name : </strong>{{data.englishName}}</li>
+          <li><strong>Arabic Name : </strong>{{data.arabicName}}</li>
+          <li><strong>Category : </strong>{{data.category.name}}</li>
+          <li><strong>Vendor : </strong>{{data.vendor.name}}</li>
+          <li><strong>Quantity : </strong>{{data.quantity}}</li>
+          <li><strong>Unit Price : </strong>{{data.price}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <app-spinner *ngIf="loading"></app-spinner>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<nav>
+  <div class="container">
+    <div class="content">
+      <h2 class="logo">Market</h2>
+      <div style="display:flex ; width: 100% ;justify-content:space-between ;">
+
+        <ul>
+          <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li>
+          <li  routerLink="/">Products</li>
+          <li *ngIf="isAuthenticated" routerLink="/cart">cart</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="isAuthenticated" ><a (click)="onLogOut()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
