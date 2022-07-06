@@ -6,8 +6,17 @@
 
         <ul>
           <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li>
-          <li  routerLink="/">Products</li>
-          <li *ngIf="isAuthenticated" routerLink="/cart">cart</li>
+          <ng-container *ngIf="!isAdmin">
+            <li   routerLink="/">Products</li>
+            <li *ngIf="isAuthenticated" routerLink="/cart">Cart</li>
+            <li *ngIf="isAuthenticated" routerLink="/UserOrders"> My Orders</li>
+          </ng-container>
+          <ng-container *ngIf="isAdmin">
+
+            <li *ngIf="isAuthenticated" routerLink="/productAdmin">Manage Products</li>
+            <li *ngIf="isAuthenticated" routerLink="/categores">Categores</li>
+          </ng-container>
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li *ngIf="isAuthenticated" ><a (click)="onLogOut()">Logout</a></li>

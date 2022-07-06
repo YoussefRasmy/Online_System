@@ -1,0 +1,22 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CategoryFormComponent } from './component/category-form/category-form.component';
+import { CategoryAdminComponent } from './component/category-admin/category-admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+
+
+
+@NgModule({
+  declarations: [
+    CategoryFormComponent,
+    CategoryAdminComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule
+  ]
+})
+export class CategorysModule { }

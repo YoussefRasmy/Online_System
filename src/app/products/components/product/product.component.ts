@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/Auth/service/auth.service';
 import { Product } from '../../Models/product';
 import { ProductsService } from '../../service/products.service';
 
@@ -10,14 +11,19 @@ import { ProductsService } from '../../service/products.service';
 export class ProductComponent implements OnInit {
   @Input() data!:Product;
   addbutton:boolean = false;
+  isAuthenticated = false;
   @Output() item = new EventEmitter();
   amount:number = 1;
   TotalPrice:any;
-  constructor(private service:ProductsService) { }
+  constructor(private service:ProductsService,private authService:AuthService) { }
 
   ngOnInit(): void {
     console.log({inventory:this.data.quantity});
-    this.TotalPrice =  1
+    this.TotalPrice = 1
+    this.authService.user.subscribe(user=>{
+      this.isAuthenticated = !!user;
+
+    })
 
   }
   add(){

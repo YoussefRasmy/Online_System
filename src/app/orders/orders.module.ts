@@ -5,6 +5,8 @@ import { AllOrdersComponent } from './components/all-orders/all-orders.component
 import { OrderComponent } from './components/order/order.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,11 +15,13 @@ import { FormsModule } from '@angular/forms';
     CreatOrderComponent,
     AllOrdersComponent,
     OrderComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class OrdersModule { }

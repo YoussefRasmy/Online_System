@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/Auth/service/auth.service';
 })
 export class HeaderComponent implements OnInit,OnDestroy {
   isAuthenticated = false;
+  isAdmin = false;
   private userSub!: Subscription;
   constructor(private authService:AuthService) { }
   ngOnDestroy(): void {
@@ -20,7 +21,12 @@ export class HeaderComponent implements OnInit,OnDestroy {
       this.isAuthenticated = !!user;
 
     })
-    
+    this.authService.CurrentUserName.subscribe(userName=>{
+
+      this.isAdmin = userName == 'Admin'
+
+    })
+
 
   }
 

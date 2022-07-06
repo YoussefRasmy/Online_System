@@ -12,8 +12,14 @@ import { AuthComponent } from './Auth/Component/auth.component';
 import { AuthInterceptorService } from './Auth/service/auth-interceptor.service';
 import { OrdersModule } from './orders/orders.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 import { CreatOrderComponent } from './orders/components/creat-order/creat-order.component';
+import { ProductFormComponent } from './products/components/product-form/product-form.component';
+import { CategorysModule } from './categorys/categorys.module';
+import { CategoryFormComponent } from './categorys/component/category-form/category-form.component';
+
+
 
 
 
@@ -36,6 +42,8 @@ import { CreatOrderComponent } from './orders/components/creat-order/creat-order
     OrdersModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatTableModule,
+    CategorysModule
 
 
 
@@ -48,6 +56,6 @@ import { CreatOrderComponent } from './orders/components/creat-order/creat-order
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents:[CreatOrderComponent]
+  entryComponents:[CreatOrderComponent,ProductFormComponent,CategoryFormComponent]
 })
 export class AppModule { }

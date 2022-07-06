@@ -1,0 +1,48 @@
+
+<div  class="row mt-2 ">
+  <div class="col-xs-12 col-md-6 offset-md-3">
+    <!-- <div class="alert alert-danger" *ngIf="LogInerror">
+      <p>{{LogInerror}}</p>
+    </div> -->
+    <div style="text-align:center ;" >
+
+    </div>
+    <form [formGroup]="categoryForm"  (ngSubmit)="onFormSubmit()">
+
+      <div class="form-group mt-3">
+        <label for="userName">Category Name</label>
+        <input type="text"
+        value="zfdfsdf"
+          class="form-control"
+          
+
+          formControlName="name"
+        />
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="parentCategory"> Parent Category</label>
+        <select
+          class="form-control"
+
+
+          formControlName="parentCategoryId"
+
+          >
+          <option  *ngFor="let cat of categoryes" value="{{cat.id}}">{{cat.name}}</option>
+        </select>
+
+      </div>
+
+      <div class="mt-4" >
+        <button
+          class="btn btn-primary "
+          type="submit"
+          [disabled]="!categoryForm.valid"
+        >Supmit</button> |
+
+        <button class="btn btn-primary" type="button" (click)="onclose()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

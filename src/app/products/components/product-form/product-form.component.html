@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+      <form [formGroup]="productForm"  (ngSubmit)="onSubmit()">
+
+        <div class="form-group  mt-3">
+          <label for="Photo">Photo</label>
+          <input
+          type="file"
+          id="Photo"
+
+          class="form-control"
+          (change)="uploadPhoto($event.target)"
+          >
+
+        </div>
+
+        <div style="display:flex ; justify-content:space-between ;">
+
+          <div class="form-group col-5 mt-3" style="display:inline-block ;">
+            <label for="Ename"> English Name</label>
+            <input
+            class="form-control"
+
+              formControlName="englishName"
+              type="text"
+              id="Ename"
+            >
+          </div>
+
+          <div class="form-group col-5 mt-3" style="display:inline-block ;">
+            <label for="AName">Arapic Name</label>
+            <input
+            class="form-control"
+              type="text"
+              id="AName"
+              formControlName="arabicName"
+            >
+          </div>
+
+        </div>
+
+        <div style="display:flex ; justify-content:space-between ;">
+
+          <div class="form-group col-5  mt-3">
+            <label for="Category">Category</label>
+            <select
+            class="form-control"
+            formControlName="category"
+
+            >
+              <option *ngFor="let item of categoryes" value="{{item.id}}">{{item.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-5 mt-3">
+            <label for="Vendor">Vendor</label>
+            <select
+            class="form-control"
+            formControlName="Vendor"
+            >
+              <option  *ngFor="let item of vendors" value="{{item.id}}">{{item.name}}</option>
+            </select>
+          </div>
+
+        </div>
+        <div style="display:flex ; justify-content:space-between ;">
+
+          <div class="form-group col-5 mt-3">
+            <label for="Quantity">Quantity</label>
+            <input
+              class="form-control"
+              formControlName="quantity"
+              type="number"
+              id="Quantity"
+            >
+          </div>
+
+          <div class="form-group col-5 mt-3">
+            <label for="Price">Price</label>
+            <input
+              class="form-control"
+              formControlName="price"
+              type="number"
+              id="Price"
+            >
+          </div>
+
+        </div>
+        <div class="form-group mt-3">
+          <label for="Description">Description</label>
+          <input
+            class="form-control"
+            formControlName="description"
+            type="text"
+            id="Description"
+          >
+        </div >
+        <div  class="form-group mt-5 btns">
+          <button class="btn btn-primary"  type="submit" >Submit</button>
+          <button class="btn btn-success" (click)="onClose()" type="button" >Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+

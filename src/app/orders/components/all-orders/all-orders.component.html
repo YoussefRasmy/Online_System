@@ -1,1 +1,70 @@
-<p>all-orders works!</p>
+
+
+
+
+<div class="cartBox">
+
+
+
+  <h1 class="text-danger">My Orders</h1>
+  <div class="headCart">
+    <p class="lead">you have <label class="text-danger">{{orders.length}} </label>
+       Order<strong *ngIf="orders.length>1">s</strong>
+    </p>
+    <div class="">
+      <!-- <button class="btn btn-success" (click)="addProduct()"> Add Product </button> -->
+
+    </div>
+  </div>
+  <!-- <form action=""> -->
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Order Number</th>
+          <th>Address</th>
+          <th>Total Price</th>
+          <th>Payment Method</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <app-spinner></app-spinner> -->
+        <tr *ngFor="let item of orders; let index = index">
+          <ng-container  >
+            <td><a style="text-decoration:none ;"routerLink="/orderDetails/{{item.id}}" routerLinkActive="router-link-active" >{{item.orderNum}}</a> </td>
+            <td>{{item.deliveryAddress}}</td>
+            <td>{{item.totalPrice}}L.E</td>
+            <td>{{(item._PaymentMethod==0)?'Visa':'On deliver'}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </ng-container>
+          <td>
+            <!-- <button class="btn btn-success" (click)="editProduct(index)" >Edit</button> -->
+          </td>
+          <td>
+            <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+
+  <!-- </form> -->
+
+  </div>
+<!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->

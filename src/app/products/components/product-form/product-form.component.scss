@@ -1,0 +1,15 @@
+.container {
+  margin-top: 30px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.btns{
+  display: flex;
+  justify-content: space-around;
+}
+.btn{
+  width: 30%;
+}
+

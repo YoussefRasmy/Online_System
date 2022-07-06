@@ -18,4 +18,15 @@ export interface Product
     quantity: Number,
     price: Number
   }
+  export interface ProductToCreate{
+    id?: Number,
+    englishName: string,
+    arabicName: string,
+    category: number,
+    vendor: number,
+    description: string,
+    photo: string,
+    quantity: number,
+    price: number
+  }
 

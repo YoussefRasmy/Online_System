@@ -7,7 +7,7 @@
       <p>{{data.description}}</p>
     </div>
   </div>
-  <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
+  <div *ngIf="isAuthenticated" class="px-3 mb-2 d-flex justify-content-between align-items-center">
 
     <button class="btn btn-success" *ngIf="!addbutton"  (click)="addbutton = true">Add To Cart</button>
 

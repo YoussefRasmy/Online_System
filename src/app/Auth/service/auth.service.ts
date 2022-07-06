@@ -16,6 +16,9 @@ export interface AuthLogInRespones{
 })
 export class AuthService {
   user = new BehaviorSubject<User>(null!);
+
+  CurrentUserName = new BehaviorSubject<string>(null!);
+
   private tokenExpirationTimer:any;
   constructor(private http:HttpClient,private router:Router) { }
 //Register

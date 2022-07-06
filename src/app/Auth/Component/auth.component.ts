@@ -48,11 +48,15 @@ export class AuthComponent implements OnInit {
         console.log(res);
         this.isLoading = false;
         this.onSwitchMode();
-      },error=>{
-        console.log(error);
-
-        this.RegestErerror = error.error;
+      },(error)=>{
         this.isLoading = false;
+        console.log(error);
+        if (error.status==200) {
+          this.onSwitchMode()
+          return;
+        }
+        this.RegestErerror = error.error;
+
       })
     //form.reset();
   }
@@ -73,6 +77,11 @@ export class AuthComponent implements OnInit {
         console.log(res);
         this.LogingToken = res;
         this.isLoading = false;
+        this.authService.CurrentUserName.next(model.UserName)
+        if (model.UserName==='Admin') {
+          this.router.navigate(['/productAdmin'])
+          return;
+        }
         this.router.navigate(['/products'])
       },error=>{
         console.log(error);
