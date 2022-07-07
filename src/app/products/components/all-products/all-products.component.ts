@@ -77,12 +77,13 @@ export class AllProductsComponent implements OnInit {
   }
 
   filterName(){
+    this.isAllSelcted= true
     if (this.search=='') {
       this.getProducts()
-      this.isAllSelcted= true
+      
       return;
     }
-    this.isAllSelcted= false
+    //this.isAllSelcted= false
     this.getProductsByName(this.search)
   }
 
