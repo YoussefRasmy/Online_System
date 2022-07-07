@@ -11,6 +11,8 @@ export class AllOrdersComponent implements OnInit {
 
   constructor(private service:OrderService) { }
 
+  pageSize:number = 5;
+  pageNum:number = 1;
   orders!:Order[];
   ngOnInit(): void {
 
