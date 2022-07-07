@@ -9,6 +9,7 @@ export class SelectComponent implements OnInit {
 
   @Input() title:string="";
   @Input() data:any[]=[];
+  @Input() allSelcted:boolean=false
   @Output() selectedValue= new EventEmitter()
   constructor() { }
 

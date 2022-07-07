@@ -17,6 +17,7 @@ export class AllProductsComponent implements OnInit {
   products:Product[] = [];
   categories:Category[] = [];
   flag:boolean = false;
+  isAllSelcted= false
   cartProducts:CartProduct[] = [];
   pagenationOutPut:PagenationDTO={
     products:[],
@@ -75,6 +76,29 @@ export class AllProductsComponent implements OnInit {
 
   }
 
+  filterName(){
+    if (this.search=='') {
+      this.getProducts()
+      return;
+    }
+    this.getProductsByName(this.search)
+  }
+
+  getProductsByName(name:string){
+    this.changeFlag();
+
+    this.service.getProductsByName(name).subscribe((res:any)=>{
+      this.products = res;
+      console.log({res});
+      this.changeFlag();
+
+
+    }, error=>{
+      alert(error.error)
+      this.changeFlag();
+
+    })
+  }
 
   getProductsByCategory(categoryId:string){
     this.changeFlag();

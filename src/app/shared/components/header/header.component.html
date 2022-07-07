@@ -6,16 +6,16 @@
 
         <ul>
           <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li>
-          <li *ngIf="!isAuthenticated"   routerLink="/">Products</li>
-          <ng-container *ngIf="!isAdmin">
-            <li   routerLink="/">Products</li>
-            <li *ngIf="isAuthenticated" routerLink="/cart">Cart</li>
-            <li *ngIf="isAuthenticated" routerLink="/UserOrders"> My Orders</li>
-          </ng-container>
-          <ng-container *ngIf="isAdmin">
+          <li  *ngIf="!isAuthenticated||isAuthenticated&&!isAdmin"  routerLink="/">Products</li>
 
-            <li *ngIf="isAuthenticated" routerLink="/productAdmin">Manage Products</li>
-            <li *ngIf="isAuthenticated" routerLink="/categores">Categores</li>
+          <ng-container *ngIf="!isAdmin&&isAuthenticated">
+            <li  routerLink="/cart">Cart</li>
+            <li  routerLink="/UserOrders"> My Orders</li>
+          </ng-container>
+          <ng-container *ngIf="isAdmin&&isAuthenticated">
+
+            <li  routerLink="/productAdmin">Manage Products</li>
+            <li  routerLink="/categores">Categores</li>
           </ng-container>
 
         </ul>

@@ -35,6 +35,10 @@ getAllVendors(){
     return this.http.get(environment.baseApi+'Product/ProductsByCategory?id='+keyword)
   }
 
+  getProductsByName(keyword:string){
+    return this.http.get(environment.baseApi+'Product/byname?enName'+keyword)
+  }
+
   getProductById(id:any){
     return this.http.get(environment.baseApi+'Product/'+id)
   }
@@ -73,7 +77,7 @@ getAllVendors(){
     this.product.next(model);
   }
 
- 
+
 
 
 }
