@@ -22,4 +22,13 @@ export class AllOrdersComponent implements OnInit {
 
   }
 
+
+  HandlePage(pageNum:number){
+
+    this.pageNum = pageNum;
+   // this.getPagenation();
+
+  }
+
+
 }

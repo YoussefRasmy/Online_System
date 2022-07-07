@@ -51,6 +51,8 @@
             <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
           </td>
         </tr>
+        <pagination-controls (pageChange)="HandlePage($event)" id="products"></pagination-controls>
+
       </tbody>
 
       <tfoot>

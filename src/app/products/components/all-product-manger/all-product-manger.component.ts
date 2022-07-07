@@ -42,7 +42,8 @@ export class AllProductMangerComponent implements OnInit {
   // }
 
   displayedColumns: string[] = ['englishName'];
-
+  pageSize:number = 5;
+  pageNum:number = 1;
   constructor(private service:ProductsService,private _httpClient: HttpClient,private dialog:MatDialog) { }
 
 
@@ -117,13 +118,21 @@ export class AllProductMangerComponent implements OnInit {
     this.dialog.afterAllClosed.subscribe(()=>{
       this.getAll()
     })
+
+
+
   }
 
 
 
 
 
+  HandlePage(pageNum:number){
 
+    this.pageNum = pageNum;
+   // this.getPagenation();
+
+  }
 
 
 
