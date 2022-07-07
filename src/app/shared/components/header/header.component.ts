@@ -22,10 +22,17 @@ export class HeaderComponent implements OnInit,OnDestroy {
 
     })
     this.authService.CurrentUserName.subscribe(userName=>{
-
-      this.isAdmin = userName == 'Admin'
+      if(userName !=null){
+        this.isAdmin = userName === 'Admin'
+        return;
+      }
+      var localUserName = localStorage.getItem("userName")!;
+      this.isAdmin = localUserName === 'Admin'
 
     })
+
+
+
 
 
   }

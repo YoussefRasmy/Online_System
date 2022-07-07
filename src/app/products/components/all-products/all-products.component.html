@@ -3,18 +3,18 @@
 <div class="box mt-5">
 
   <div  class="my-2 w-25">
-
     <app-select [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)"></app-select>
+    <input type="text" [(ngModel)]="search">
   </div>
   <div class="row" *ngIf="!flag">
-    <div class="col-md-3 col-sm-12" *ngFor="let item of products">
+    <div class="col-md-3 col-sm-12" *ngFor="let item of products|paginate:  { id:'products', itemsPerPage: pageSize, currentPage: pageNum, totalItems:products!.length }">
       <app-product [data]="item" (item)="addToCart($event)"></app-product>
     </div>
+    <pagination-controls (pageChange)="HandlePage($event)" id="products"></pagination-controls>
   </div>
-
   <div class="text-center w-100" *ngIf="flag">
     <app-spinner></app-spinner>
-</div>
+  </div>
 </div>
 
 

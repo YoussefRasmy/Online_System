@@ -4,6 +4,7 @@ import { observable, switchMap } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { AuthService } from 'src/app/Auth/service/auth.service';
 import { environment } from 'src/environments/environment';
+import { PagenationDTO } from '../Models/pagenationDTO';
 import { Product, ProductToCreate } from '../Models/product';
 
 @Injectable({
@@ -46,6 +47,13 @@ getAllVendors(){
     return this.http.post(environment.baseApi+'Product', model)
   }
 
+
+  // pagenationService(pageNum:number,pageSize:number,categoryId:number){
+
+  //   return this.http.get<PagenationDTO>(environment.baseApi+'Product/pagination/'+pageNum+'/'+pageSize+'/'+categoryId)
+  // }
+
+
   uploadImage(file:File){
     const form = new FormData();
     form.append('file',file)
@@ -65,10 +73,7 @@ getAllVendors(){
     this.product.next(model);
   }
 
-  getTheImage(imagePath:string){
-    return this.http.post(environment.baseApi+'Images',imagePath)
-
-  }
+ 
 
 
 }

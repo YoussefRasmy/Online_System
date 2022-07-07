@@ -8,8 +8,8 @@
 
   <h1 class="text-danger">Mange Products</h1>
   <div class="headCart">
-    <p class="lead">you have <label class="text-danger">{{Products.length}} </label>
-       Product<strong *ngIf="Products.length>1">s</strong>
+    <p class="lead">you have <label class="text-danger">{{Products?.length}} </label>
+       Product<strong *ngIf="Products!.length>1">s</strong>
     </p>
     <div class="">
       <button class="btn btn-success" (click)="addProduct()"> Add Product </button>

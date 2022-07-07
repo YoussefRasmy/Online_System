@@ -22,11 +22,12 @@ enum UploadImageStatus{
 })
 export class ProductFormComponent implements OnInit {
 
+  UploadImageStatus = UploadImageStatus;
   ImageStatus = UploadImageStatus.pending;
 
   productForm:FormGroup =new FormGroup({
-    'englishName':new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-    'arabicName':new FormControl("",[Validators.required,Validators.pattern('^[\u0621-\u064A ]+$')]),
+    'englishName':new FormControl("",[Validators.required,Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    'arabicName':new FormControl("",[Validators.required,Validators.pattern(/^[\u0621-\u064A ]+$/)]),
     'category':new FormControl("",[Validators.required]),
     'Vendor':new FormControl("",[Validators.required]),
     'quantity':new FormControl("",[Validators.required,Validators.max(100000)]),
@@ -89,12 +90,7 @@ productId=0;
     console.log({modelBeforSending:model});
 
     if (this.edit) {
-      console.log(this.productId);
-
-      this.service.getTheImage(model.imagePath).subscribe(res=>{
-        console.log(res);
-
-      })
+      //console.log(this.productId);
 
       this.service.updateProduct(model,this.productId).subscribe();
       this.onClose()
@@ -102,10 +98,10 @@ productId=0;
       return;
     }
 
-    this.service.getTheImage(model.imagePath).subscribe(res=>{
-      console.log(res);
+    // this.service.getTheImage(model.imagePath).subscribe(res=>{
+    //   console.log(res);
 
-    })
+    // })
     this.service.addProduct(model).subscribe()
     this.onClose()
   }

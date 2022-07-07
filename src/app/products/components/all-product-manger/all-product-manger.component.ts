@@ -11,6 +11,7 @@ import { ViewChild, AfterViewInit} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, SortDirection} from '@angular/material/sort';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { filter } from 'rxjs';
 
 
 
@@ -99,7 +100,10 @@ export class AllProductMangerComponent implements OnInit {
   }
 
   deleteProduct(index:number){
-this.service.deleteProduct(+this.Products[index].id).subscribe();
+    this.service.deleteProduct(+this.Products[index].id).subscribe(()=>{
+    this.Products= this.Products.filter(x=>x.id !== this.Products[index].id)
+  });
+
   }
 
   addProduct(){
@@ -110,7 +114,9 @@ this.service.deleteProduct(+this.Products[index].id).subscribe();
     dialogConfig.id="dialog"
 
     this.dialog.open(ProductFormComponent,dialogConfig)
-    //this.dialog.afterAllClosed.subscribe(()=>{})
+    this.dialog.afterAllClosed.subscribe(()=>{
+      this.getAll()
+    })
   }
 
 

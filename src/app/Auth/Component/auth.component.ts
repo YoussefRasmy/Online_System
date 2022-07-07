@@ -71,6 +71,7 @@ export class AuthComponent implements OnInit {
         UserName : form.value.userName,
         Password : form.value.password
       }
+      localStorage.setItem("userName", model.UserName);
 //console.log(model);
       this.isLoading = true;
       this.authService.Login(model).subscribe((res:AuthLogInRespones)=>{

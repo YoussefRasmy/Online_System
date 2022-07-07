@@ -6,6 +6,7 @@
 
         <ul>
           <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li>
+          <li *ngIf="!isAuthenticated"   routerLink="/">Products</li>
           <ng-container *ngIf="!isAdmin">
             <li   routerLink="/">Products</li>
             <li *ngIf="isAuthenticated" routerLink="/cart">Cart</li>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartProduct } from '../../Models/cartProduct';
 import { Category } from '../../Models/category';
+import { PagenationDTO } from '../../Models/pagenationDTO';
 import { Product } from '../../Models/product';
 import { ProductsService } from '../../service/products.service';
 
@@ -11,17 +12,32 @@ import { ProductsService } from '../../service/products.service';
 })
 export class AllProductsComponent implements OnInit {
 
+  search:string='';
+  categoryId!:number;
   products:Product[] = [];
   categories:Category[] = [];
   flag:boolean = false;
   cartProducts:CartProduct[] = [];
+  pagenationOutPut:PagenationDTO={
+    products:[],
+    count : 0
+  }
+  pageSize:number = 3;
+  pageNum:number = 1;
   constructor(private service:ProductsService) { }
 
   ngOnInit(): void {
     this.getProducts();
     this.getCategory();
+   // this.getPagenation();
+
   }
 
+  // getPagenation(){
+  //   this.service.pagenationService(this.pageNum,this.pageSize,this.categoryId).subscribe((res)=>{
+  //     this.pagenationOutPut = res;
+  //   })
+  // }
   getProducts(){
     this.changeFlag();
     this.service.getAllProducts().subscribe((res:Product[])=>{
@@ -51,10 +67,11 @@ export class AllProductsComponent implements OnInit {
   }
 
   filterCategory(event:any){
-let value = event.target.value
-console.log(value);
- (value === "all") ? this.getProducts() : this.getProductsByCategory(value);
+  let value:any = event.target.value
+  value === "all" ? this.getProducts() : this.getProductsByCategory(value);
 
+    //console.log(value);
+ // this.getPagenation()
 
   }
 
@@ -123,5 +140,11 @@ console.log(value);
     //API Update
   }
 
+  HandlePage(pageNum:number){
+
+    this.pageNum = pageNum;
+   // this.getPagenation();
+
+  }
 
 }

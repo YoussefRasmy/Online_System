@@ -18,6 +18,7 @@ export interface Product
     quantity: Number,
     price: Number
   }
+  
   export interface ProductToCreate{
     id?: Number,
     englishName: string,
