@@ -36,7 +36,9 @@ getAllVendors(){
   }
 
   getProductsByName(keyword:string){
-    return this.http.get(environment.baseApi+'Product/byname?enName'+keyword)
+
+
+    return this.http.get(environment.baseApi+'Product/byname?enName='+keyword)
   }
 
   getProductById(id:any){
