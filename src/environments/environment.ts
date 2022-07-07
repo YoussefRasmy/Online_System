@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseApi:"https://yousefonlinestore.azurewebsites.net/"
+  baseApi:"https://yousefonlinestore.azurewebsites.net/api/"
 };
 
 // "https://localhost:7043/api/"
