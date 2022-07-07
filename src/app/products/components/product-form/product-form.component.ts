@@ -77,6 +77,11 @@ productId=0;
   }
 
   onSubmit(){
+    if (this.productForm.invalid || this.ImageStatus!== UploadImageStatus.success) {
+
+      return;
+
+    }
     const model:any={
       arabicName: this.productForm.get('arabicName')?.value,
       englishName:this.productForm.get('englishName')!.value,
@@ -87,6 +92,7 @@ productId=0;
       imagePath : this.productForm.get('photo')!.value,
       description : this.productForm.get('description')!.value
     }
+
     console.log({modelBeforSending:model});
 
     if (this.edit) {
@@ -125,6 +131,7 @@ productId=0;
 
     },(err)=>{
       this.ImageStatus = UploadImageStatus.fail
+
 
     })
   }
