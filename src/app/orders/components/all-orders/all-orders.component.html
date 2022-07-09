@@ -36,7 +36,7 @@
         <!-- <app-spinner></app-spinner> -->
         <tr *ngFor="let item of orders|paginate:  { id:'products', itemsPerPage: pageSize, currentPage: pageNum, totalItems:orders!.length }; let index = index">
           <ng-container  >
-            <td><a style="text-decoration:none ;"routerLink="orderDetails/{{item.id}}" >{{item.orderNum}}</a> </td>
+            <td><a style="text-decoration:none ;"routerLink="/orderDetails/{{item.id}}" >{{item.orderNum}}</a> </td>
             <td>{{item.deliveryAddress}}</td>
             <td>{{item.totalPrice}}L.E</td>
             <td>{{(item._PaymentMethod==0)?'Visa':'On deliver'}}</td>
