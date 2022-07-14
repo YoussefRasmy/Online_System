@@ -1,8 +1,10 @@
 
 
 
-
-<div class="cartBox">
+<div *ngIf="loading" class="text-center mt-5 w-100" >
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!loading" class="cartBox">
 
 
 
@@ -33,9 +35,9 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <app-spinner></app-spinner> -->
-        <tr *ngFor="let item of orders|paginate:  { id:'products', itemsPerPage: pageSize, currentPage: pageNum, totalItems:orders!.length }; let index = index">
-          <ng-container  >
+
+        <tr   *ngFor="let item of orders|paginate:  { id:'products', itemsPerPage: pageSize, currentPage: pageNum, totalItems:orders!.length }; let index = index">
+          <ng-container >
             <td><a style="text-decoration:none ;"routerLink="/orderDetails/{{item.id}}" >{{item.orderNum}}</a> </td>
             <td>{{item.deliveryAddress}}</td>
             <td>{{item.totalPrice}}L.E</td>
@@ -45,10 +47,8 @@
             <td></td>
           </ng-container>
           <td>
-            <!-- <button class="btn btn-success" (click)="editProduct(index)" >Edit</button> -->
           </td>
           <td>
-            <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
           </td>
         </tr>
         <pagination-controls (pageChange)="HandlePage($event)" id="products"></pagination-controls>

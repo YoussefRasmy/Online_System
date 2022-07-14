@@ -7,6 +7,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { ConfirmationPageComponent } from './components/confirmation-page/confirmation-page.component';
 
 
 
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     AllOrdersComponent,
     OrderComponent,
     OrderDetailsComponent,
+    ConfirmationPageComponent,
 
   ],
   imports: [

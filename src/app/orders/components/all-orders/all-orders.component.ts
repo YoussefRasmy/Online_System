@@ -14,11 +14,10 @@ export class AllOrdersComponent implements OnInit {
   pageSize:number = 5;
   pageNum:number = 1;
   orders!:Order[];
+  loading = false;
   ngOnInit(): void {
+    this.GetAll()
 
-    this.service.GetAllUserOrders().subscribe((res:Order[])=>{
-      this.orders = res;
-    })
 
   }
 
@@ -26,9 +25,17 @@ export class AllOrdersComponent implements OnInit {
   HandlePage(pageNum:number){
 
     this.pageNum = pageNum;
+
    // this.getPagenation();
 
   }
 
+  GetAll(){
+    this.loading = true
+    this.service.GetAllUserOrders().subscribe((res:Order[])=>{
+      this.orders = res;
+      this.loading = false
+    })
+  }
 
 }

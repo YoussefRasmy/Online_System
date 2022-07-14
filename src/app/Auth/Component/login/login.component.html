@@ -1,0 +1,48 @@
+
+<div  class="row mt-5 ">
+  <div class="col-xs-12 col-md-6 offset-md-3">
+    <div class="alert alert-danger" *ngIf="LogInerror">
+      <p>{{LogInerror}}</p>
+    </div>
+    <div style="text-align:center ;" >
+      <app-spinner *ngIf="isLoading"></app-spinner>
+    </div>
+    <form *ngIf="!isLoading" #logInForm="ngForm" (ngSubmit)="onLogInFormSubmit(logInForm)">
+
+      <div class="form-group mt-3">
+        <label for="userName">User Name</label>
+        <input type="text"
+          id="userName"
+          class="form-control"
+          required
+          ngModel
+          name="userName"
+        />
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="password"> password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          required
+          minlength="6"
+          ngModel
+          name="password"
+
+        />
+      </div>
+
+      <div class="mt-4" >
+        <button
+          class="btn btn-primary "
+          type="submit"
+          [disabled]="!logInForm.valid"
+        >Login</button> |
+
+        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">Switch to Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>

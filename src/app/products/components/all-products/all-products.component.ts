@@ -22,6 +22,7 @@ export class AllProductsComponent implements OnInit {
   pagenationOutPut:PagenationDTO={
     products:[],
     count : 0
+
   }
   pageSize:number = 3;
   pageNum:number = 1;
@@ -42,9 +43,7 @@ export class AllProductsComponent implements OnInit {
   getProducts(){
     this.changeFlag();
     this.service.getAllProducts().subscribe((res:Product[])=>{
-      console.log(
-        {res}
-      );
+      //console.log({res});
 
     this.products= res;
     this.changeFlag();
@@ -80,7 +79,7 @@ export class AllProductsComponent implements OnInit {
     this.isAllSelcted= true
     if (this.search=='') {
       this.getProducts()
-      
+
       return;
     }
     //this.isAllSelcted= false

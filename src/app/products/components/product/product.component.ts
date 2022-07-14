@@ -26,6 +26,8 @@ export class ProductComponent implements OnInit {
     })
 
   }
+  //no use for it any more cuz I send the data to the api direct no need to save it in the local any more
+  //however i need to understand the event emmitter and the input and output 
   add(){
     this.item.emit({item:this.data,Quantity:this.amount});
   }

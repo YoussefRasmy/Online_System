@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ConfirmationPageComponent } from 'src/app/orders/components/confirmation-page/confirmation-page.component';
 import { CreatOrderComponent } from 'src/app/orders/components/creat-order/creat-order.component';
 import { OrderCradential } from 'src/app/orders/service/order.service';
 import { SharedService } from 'src/app/shared/service/shared.service';
@@ -19,7 +21,8 @@ amountCheck = 1;
 sameAmount = true;
 total:any;
 success:boolean = false;
-  constructor( private service:CartsService,private dialog:MatDialog, private sharedService:SharedService) { }
+
+  constructor( private router:Router, private service:CartsService,private dialog:MatDialog, private sharedService:SharedService) { }
 
   ngOnInit(): void {
     //this.getCartProducts()
@@ -117,13 +120,14 @@ success:boolean = false;
     this.dialog.open(CreatOrderComponent,dialogConfig)
     this.dialog.afterAllClosed.subscribe(()=>{
       console.log("hi this is joe");
-      this.sharedService.user.subscribe(async (res:OrderCradential)=>{
+      this.sharedService.user.subscribe( /*async*/ (res:OrderCradential)=>{
         if (res!==null) {
           console.log(res);
           this.success = true;
-           this.service.SendOrder(res).subscribe(()=>{
-
+           this.service.SendOrder(res).subscribe((orderId)=>{
             this.clearCart();
+            this.router.navigateByUrl('/orderConfirm/'+orderId)
+
           })
         }
 

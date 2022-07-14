@@ -123,6 +123,7 @@ productId=0;
     if (!input.files?.length) {
       return;
     }
+    
     var file = input.files![0];
     this.service.uploadImage(file).subscribe((res:any)=>{
       this.ImageStatus = UploadImageStatus.success

@@ -5,7 +5,9 @@
       <div style="display:flex ; width: 100% ;justify-content:space-between ;">
 
         <ul>
-          <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li>
+          <!-- <li *ngIf="!isAuthenticated" routerLink="/auth">Authenticate</li> -->
+          <li *ngIf="!isAuthenticated" routerLink="/login">Login</li>
+          <li *ngIf="!isAuthenticated" routerLink="/signup">Sign up</li>
           <li  *ngIf="!isAuthenticated||isAuthenticated&&!isAdmin"  routerLink="/">Products</li>
 
           <ng-container *ngIf="!isAdmin&&isAuthenticated">
@@ -17,7 +19,7 @@
             <li  routerLink="/productAdmin">Manage Products</li>
             <li  routerLink="/categores">Categores</li>
           </ng-container>
-
+          <!-- signup login -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li *ngIf="isAuthenticated" ><a (click)="onLogOut()">Logout</a></li>

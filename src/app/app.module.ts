@@ -18,6 +18,8 @@ import { CreatOrderComponent } from './orders/components/creat-order/creat-order
 import { ProductFormComponent } from './products/components/product-form/product-form.component';
 import { CategorysModule } from './categorys/categorys.module';
 import { CategoryFormComponent } from './categorys/component/category-form/category-form.component';
+import { LoginComponent } from './Auth/Component/login/login.component';
+import { SignupComponent } from './Auth/Component/signup/signup.component';
 
 
 
@@ -27,6 +29,8 @@ import { CategoryFormComponent } from './categorys/component/category-form/categ
   declarations: [
     AppComponent,
     AuthComponent,
+    LoginComponent,
+    SignupComponent,
 
   ],
   imports: [
