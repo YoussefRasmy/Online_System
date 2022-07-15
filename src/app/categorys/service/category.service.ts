@@ -11,7 +11,11 @@ export class CategoryService {
 category = new BehaviorSubject<Category>(null!)
   constructor(private http:HttpClient) { }
   getAllCategory(){
-    return this.http.get<Category[]>(environment.baseApi+'Category/all')
+    return this.http.get<Category[]>(environment.baseApi+'Category/all')//all-parents
+  }
+
+  getAllParentCategory(){
+    return this.http.get<Category[]>(environment.baseApi+'Category/parents')//all-parents
   }
 
   getCategoryByName(name:string){

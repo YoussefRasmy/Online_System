@@ -19,6 +19,7 @@ export class CategoryFormComponent implements OnInit {
   })
 
   categoryes!:Category[];
+  parentCategoryes!:Category[];
 
 
   isEdit=false;
@@ -30,7 +31,7 @@ export class CategoryFormComponent implements OnInit {
   ngOnInit(): void {
     this.service.category.subscribe(res=>{
 
-      this.service.getAllCategory().subscribe((res)=>{
+      this.service.getAllParentCategory().subscribe((res)=>{
         this.categoryes = res
       })
 
@@ -40,6 +41,12 @@ export class CategoryFormComponent implements OnInit {
         this.categoryEditId = +res.id!
       }
     })
+
+
+
+
+
+
 
 
   }
