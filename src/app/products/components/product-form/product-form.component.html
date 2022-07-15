@@ -14,9 +14,11 @@
           class="form-control"
           (change)="uploadPhoto($event.target)"
           >
-          <label *ngIf="ImageStatus== UploadImageStatus.pending">Waiting For Image</label>
-          <label *ngIf="ImageStatus== UploadImageStatus.success">Success</label>
-          <label *ngIf="ImageStatus== UploadImageStatus.fail">Fail To Upload</label>
+
+            <label *ngIf="ImageStatus== UploadImageStatus.success">Success</label>
+            <label *ngIf="ImageStatus== UploadImageStatus.pending">Waiting For Image</label>
+            <label *ngIf="ImageStatus== UploadImageStatus.fail">Fail To Upload</label>
+          
         </div>
 
         <div style="display:flex ; justify-content:space-between ;">

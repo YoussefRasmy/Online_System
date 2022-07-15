@@ -77,7 +77,7 @@ productId=0;
   }
 
   onSubmit(){
-    if (this.productForm.invalid || this.ImageStatus!== UploadImageStatus.success) {
+    if (this.productForm.invalid || (this.ImageStatus!== UploadImageStatus.success && !this.edit)) {
 
       return;
 
@@ -93,7 +93,7 @@ productId=0;
       description : this.productForm.get('description')!.value
     }
 
-    console.log({modelBeforSending:model});
+    //console.log({modelBeforSending:model});
 
     if (this.edit) {
       //console.log(this.productId);
@@ -123,7 +123,7 @@ productId=0;
     if (!input.files?.length) {
       return;
     }
-    
+
     var file = input.files![0];
     this.service.uploadImage(file).subscribe((res:any)=>{
       this.ImageStatus = UploadImageStatus.success
