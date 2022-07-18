@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
       },(error)=>{
         this.isLoading = false;
         console.log(error);
-        if (error.status==200) {
+        if (error.status==200||error.status == 201) {
           this.onSwitchMode()
           return;
         }

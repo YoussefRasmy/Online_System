@@ -30,8 +30,8 @@ export class ProductFormComponent implements OnInit {
     'arabicName':new FormControl("",[Validators.required,Validators.pattern(/^[\u0621-\u064A ]+$/)]),
     'category':new FormControl("",[Validators.required]),
     'Vendor':new FormControl("",[Validators.required]),
-    'quantity':new FormControl("",[Validators.required,Validators.max(100000)]),
-    'price':new FormControl("",[Validators.required,Validators.max(10000)]),
+    'quantity':new FormControl("",[Validators.required,Validators.max(100000),Validators.min(1)]),
+    'price':new FormControl("",[Validators.required,Validators.max(10000),Validators.min(1)]),
     'photo':new FormControl("",[Validators.required]),
     'description':new FormControl("",[Validators.required])
   })
@@ -113,6 +113,7 @@ productId=0;
   }
 
   onClose(){
+
 
     this.dialogRef.close()
   }

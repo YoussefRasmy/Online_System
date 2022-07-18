@@ -16,7 +16,7 @@
         <button class="btn btn-success" [disabled]="amount <= 1" (click)="subtractAmount()">-</button>
         <input type="number" class="form-control" style="margin: 0 5px; min-width: 60px;" disabled [(ngModel)]="amount" >
         <button class="btn btn-success" [disabled]="data.quantity<=amount"  (click)="addAmount()">+</button>
-        <button class="btn btn-success ml-5"  style="margin: 0 5px" (click)="add();addbutton = false; addToCart()">Add</button>
+        <button class="btn btn-success ml-5"  style="margin: 0 5px" (click)="addbutton = false; addToCart()">Add</button>
 
     </div>
     <!-- <div>

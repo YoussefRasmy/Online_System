@@ -20,7 +20,7 @@ import { CategorysModule } from './categorys/categorys.module';
 import { CategoryFormComponent } from './categorys/component/category-form/category-form.component';
 import { LoginComponent } from './Auth/Component/login/login.component';
 import { SignupComponent } from './Auth/Component/signup/signup.component';
-
+//import { JwtModule,JwtHelperService } from "@auth0/angular-jwt";
 
 
 
@@ -47,7 +47,9 @@ import { SignupComponent } from './Auth/Component/signup/signup.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatTableModule,
-    CategorysModule
+    CategorysModule,
+    //JwtModule,
+
 
 
 

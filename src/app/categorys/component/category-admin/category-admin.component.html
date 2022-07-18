@@ -2,12 +2,13 @@
 
 
 
-<div class="cartBox">
+  <ng-container *ngIf="!!allcategories">
+
+    <div class="cartBox">
 
 
-
-  <h1 class="text-danger">Mange Categories</h1>
-  <div class="headCart">
+      <h1 class="text-danger">Mange Categories</h1>
+      <div class="headCart">
     <p class="lead">you have <label class="text-danger">{{allcategories.length}} </label>
        Categor<strong>{{allcategories.length>1?'ies':'y'}}</strong>
     </p>
@@ -71,3 +72,5 @@
 
   </div>
 <!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->
+
+</ng-container>

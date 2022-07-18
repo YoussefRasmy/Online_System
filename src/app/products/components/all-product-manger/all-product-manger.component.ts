@@ -96,7 +96,10 @@ export class AllProductMangerComponent implements OnInit {
     }
     this.service.sendProductToEdit(model)
     this.dialog.open(ProductFormComponent,dialogConfig)
-    //this.dialog.afterAllClosed.subscribe(()=>{})
+    this.dialog.afterAllClosed.subscribe(()=>{
+      this.getAll()
+    })
+
 
   }
 
@@ -118,14 +121,7 @@ export class AllProductMangerComponent implements OnInit {
     this.dialog.afterAllClosed.subscribe(()=>{
       this.getAll()
     })
-
-
-
   }
-
-
-
-
 
   HandlePage(pageNum:number){
 
@@ -133,7 +129,5 @@ export class AllProductMangerComponent implements OnInit {
    // this.getPagenation();
 
   }
-
-
 
 }

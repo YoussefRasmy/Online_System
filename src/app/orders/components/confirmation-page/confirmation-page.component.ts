@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Order } from '../../Models/Order';
 import { OrderService } from '../../service/order.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { OrderService } from '../../service/order.service';
 })
 export class ConfirmationPageComponent implements OnInit {
   id!:any;
-  data!:any;
+  data!:Order;
   loading:boolean=false;
   constructor(private route:ActivatedRoute, private service:OrderService) {
     this.id = this.route.snapshot.paramMap.get("id")

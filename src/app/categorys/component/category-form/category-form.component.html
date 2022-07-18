@@ -12,12 +12,15 @@
       <div class="form-group mt-3">
         <label for="userName">Category Name</label>
         <input type="text"
-        value="zfdfsdf"
+
           class="form-control"
-          
+
 
           formControlName="name"
         />
+        <span class="help-block text-danger" *ngIf="!categoryForm.get('name')?.valid && categoryForm.get('name')?.touched" >
+          this feild Required And Must be English letter Only
+        </span>
       </div>
 
       <div class="form-group mt-3">
@@ -29,7 +32,9 @@
           formControlName="parentCategoryId"
 
           >
-          <option  *ngFor="let cat of categoryes" value="{{cat.id}}">{{cat.name}}</option>
+          <ng-container  *ngFor="let cat of categoryes">
+            <option *ngIf="cat.id!==categoryEditId" value="{{cat.id}}">{{cat.name}}</option>
+          </ng-container>
         </select>
 
       </div>

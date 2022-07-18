@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   GetOrderById(id:number){
-    return this.http.get<Order[]>(environment.baseApi+'Order/one/?id='+id)
+    return this.http.get<Order>(environment.baseApi+'Order/one/?id='+id)
   }
 
 }

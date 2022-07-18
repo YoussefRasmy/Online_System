@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { take } from 'rxjs';
 import { Category } from 'src/app/products/Models/category';
 import { CategoryService } from '../../service/category.service';
 import { CategoryFormComponent } from '../category-form/category-form.component';
@@ -16,11 +17,7 @@ export class CategoryAdminComponent implements OnInit {
   searchValue!:string;
   ngOnInit(): void {
 
-    this.service.getAllCategory().subscribe((res:Category[])=>{
-      this.allcategories = res
-      console.log(res);
-
-    })
+    this.getAllCategory();
 
   }
 
@@ -45,6 +42,13 @@ export class CategoryAdminComponent implements OnInit {
 
   }
 
+  getAllCategory(){
+    this.service.getAllCategory().subscribe((res:Category[])=>{
+      this.allcategories = res
+      console.log(res);
+
+    })
+  }
 
   editcategory(index:number){
 
@@ -60,12 +64,19 @@ export class CategoryAdminComponent implements OnInit {
       parentCategoryId:this.allcategories[index].parentCategoryId
     }
     this.dialog.open(CategoryFormComponent,dialogConfig);
+    this.dialog.afterAllClosed.pipe(take(1)).subscribe(()=>{
+
+      this.getAllCategory();
+
+    })
   }
 
   deletecategory(index:number){
 
-    this.service.deleteCategory(+this.allcategories[index].id!).subscribe()
-    this.allcategories= this.allcategories.filter(x=>x.id!==this.allcategories[index].id)
+    this.service.deleteCategory(+this.allcategories[index].id!).subscribe(()=>{
+
+      this.allcategories= this.allcategories.filter(x=>x.id!==this.allcategories[index].id)
+    })
   }
 
   addcategory(){
@@ -75,6 +86,11 @@ export class CategoryAdminComponent implements OnInit {
     dialogConfig.width="50%";
     dialogConfig.id="dialog"
     this.dialog.open(CategoryFormComponent,dialogConfig)
+    this.dialog.afterAllClosed.pipe(take(1)).subscribe(()=>{
+
+      this.getAllCategory();
+
+    })
 
   }
 

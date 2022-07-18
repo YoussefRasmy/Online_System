@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthLogInRespones, AuthService } from '../../service/auth.service';
+// import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -44,18 +45,24 @@ export class LoginComponent implements OnInit {
 //console.log(model);
       this.isLoading = true;
       this.authService.Login(model).subscribe((res:AuthLogInRespones)=>{
+        const token = this.authService.getDecodedAccessToken(res.token)
+
+        // console.log({TOKEN:token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]});
+
+       const userRole = token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
         console.log(res);
         this.LogingToken = res;
         this.isLoading = false;
         this.authService.CurrentUserName.next(model.UserName)
-        if (model.UserName==='Admin') {
+        //this.authService.CurrentUserRole.next(userRole)
+        if (userRole==='Admin') {
           this.router.navigate(['/productAdmin'])
           return;
         }
         this.router.navigate(['/products'])
       },error=>{
         console.log(error);
-        this.LogInerror = 'An error occured';
+        this.LogInerror = error.error
         this.isLoading = false;
       })
 

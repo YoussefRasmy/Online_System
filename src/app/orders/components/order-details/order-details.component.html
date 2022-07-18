@@ -16,74 +16,77 @@
   ] -->
 
 
-<div class="cartBox">
+  <ng-container *ngIf="!!data">
+    <div class="cartBox">
 
 
 
-  <h1 class="text-danger mt-3">Order To : {{data.deliveryAddress}}</h1>
+    <h1 class="text-danger mt-3">Order To : {{data.deliveryAddress}}</h1>
 
-  <h1 class="text-danger">Payment Metod : {{data._PaymentMethod==0?'Visa':'On Delever'}}</h1>
-  <div class="headCart">
-    <p class="lead">you have <label class="text-danger">{{data.products.length}} </label>
-       Product<strong *ngIf="data.products.length>1">s</strong>
-    </p>
-    <p class="lead">
-      Total Price {{data.totalPrice}}
-    </p>
-    <div class="">
-      <!-- <button class="btn btn-success" (click)="addProduct()"> Add Product </button> -->
+    <h1 class="text-danger">Payment Metod : {{data._PaymentMethod==0?'Visa':'On Delever'}}</h1>
+    <div class="headCart">
+      <p class="lead">you have <label class="text-danger">{{data.products.length}} </label>
+        Product<strong *ngIf="data.products.length>1">s</strong>
+      </p>
+      <p class="lead">
+        Total Price {{data.totalPrice}}
+      </p>
+      <div class="">
+        <!-- <button class="btn btn-success" (click)="addProduct()"> Add Product </button> -->
+
+      </div>
+    </div>
+    <!-- <form action=""> -->
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> Pic </th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+              <!-- <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <app-spinner></app-spinner> -->
+          <tr *ngFor="let item of data.products; let index = index">
+            <ng-container  >
+              <td><img src="{{item.imagePath}}" alt=""> </td>
+              <td>{{item.productName}}</td>
+              <td>{{item.quantity}}</td>
+              <td>{{item.price}}</td>
+              <!-- <td></td>
+              <td></td>
+              <td></td> -->
+            </ng-container>
+            <td>
+              <!-- <button class="btn btn-success" (click)="editProduct(index)" >Edit</button> -->
+            </td>
+            <td>
+              <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+
+    <!-- </form> -->
 
     </div>
-  </div>
-  <!-- <form action=""> -->
+  <!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> Pic </th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-            <!-- <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th> -->
-        </tr>
-      </thead>
-      <tbody>
-        <!-- <app-spinner></app-spinner> -->
-        <tr *ngFor="let item of data.products; let index = index">
-          <ng-container  >
-            <td><img src="{{item.imagePath}}" alt=""> </td>
-            <td>{{item.productName}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.price}}</td>
-            <!-- <td></td>
-            <td></td>
-            <td></td> -->
-          </ng-container>
-          <td>
-            <!-- <button class="btn btn-success" (click)="editProduct(index)" >Edit</button> -->
-          </td>
-          <td>
-            <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
-          </td>
-        </tr>
-      </tbody>
-
-      <tfoot>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </tfoot>
-    </table>
-
-  <!-- </form> -->
-
-  </div>
-<!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->
+</ng-container>

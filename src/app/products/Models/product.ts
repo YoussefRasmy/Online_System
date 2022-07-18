@@ -17,8 +17,10 @@ export interface Product
     description: string,
     quantity: Number,
     price: Number
+    /////// added new
+    quantityInCart?:Number
   }
-  
+
   export interface ProductToCreate{
     id?: Number,
     englishName: string,

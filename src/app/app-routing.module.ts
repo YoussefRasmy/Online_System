@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './Auth/Component/auth.component';
 import { LoginComponent } from './Auth/Component/login/login.component';
 import { SignupComponent } from './Auth/Component/signup/signup.component';
+import { AuthAdminGuard } from './Auth/service/auth-admin.guard';
 import { AuthGuard } from './Auth/service/auth.guard';
 import { CartComponent } from './carts/components/cart/cart.component';
 import { CategoryAdminComponent } from './categorys/component/category-admin/category-admin.component';
@@ -24,8 +25,8 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   // {path:"myOrders",component:OrderComponent,canActivate:[AuthGuard]},
   {path:"UserOrders",component:AllOrdersComponent,canActivate:[AuthGuard]},
-  {path:"productAdmin",component:AllProductMangerComponent,canActivate:[AuthGuard]},
-  {path:"categores",component:CategoryAdminComponent,canActivate:[AuthGuard]},
+  {path:"productAdmin",component:AllProductMangerComponent,canActivate:[AuthAdminGuard]},
+  {path:"categores",component:CategoryAdminComponent,canActivate:[AuthGuard,AuthAdminGuard]},
   {path:"orderDetails/:id",component:OrderDetailsComponent,canActivate:[AuthGuard]},
   {path:"orderConfirm/:id",component:ConfirmationPageComponent,canActivate:[AuthGuard]},
   {path:"**",redirectTo:"products",pathMatch:"full"},

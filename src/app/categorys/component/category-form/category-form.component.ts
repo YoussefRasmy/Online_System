@@ -29,6 +29,7 @@ export class CategoryFormComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:CategoryService,private dialogRef:MatDialogRef<CategoryFormComponent>) { }
 
   ngOnInit(): void {
+    
     this.service.category.subscribe(res=>{
 
       this.service.getAllParentCategory().subscribe((res)=>{

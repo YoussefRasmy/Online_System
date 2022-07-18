@@ -18,7 +18,7 @@
             <label *ngIf="ImageStatus== UploadImageStatus.success">Success</label>
             <label *ngIf="ImageStatus== UploadImageStatus.pending">Waiting For Image</label>
             <label *ngIf="ImageStatus== UploadImageStatus.fail">Fail To Upload</label>
-          
+
         </div>
 
         <div style="display:flex ; justify-content:space-between ;">
@@ -32,6 +32,9 @@
               type="text"
               id="Ename"
             >
+            <span class="help-block text-danger" *ngIf="!productForm.get('englishName')?.valid&&productForm.get('englishName')?.touched" >
+              this feild Must be English letter Only
+            </span>
           </div>
 
           <div class="form-group col-5 mt-3" style="display:inline-block ;">
@@ -42,6 +45,9 @@
               id="AName"
               formControlName="arabicName"
             >
+            <span class="help-block text-danger" *ngIf="!productForm.get('arabicName')?.valid&&productForm.get('arabicName')?.touched" >
+              this feild Must be Arabic letter Only
+            </span>
           </div>
 
         </div>
@@ -57,6 +63,9 @@
             >
               <option *ngFor="let item of categoryes" value="{{item.id}}">{{item.name}}</option>
             </select>
+            <span class="help-block text-danger" *ngIf="!productForm.get('category')?.valid&&productForm.get('category')?.touched" >
+              this feild is Required
+            </span>
           </div>
 
           <div class="form-group col-5 mt-3">
@@ -67,6 +76,9 @@
             >
               <option  *ngFor="let item of vendors" value="{{item.id}}">{{item.name}}</option>
             </select>
+            <span class="help-block text-danger" *ngIf="!productForm.get('Vendor')?.valid&&productForm.get('Vendor')?.touched" >
+              this feild is Required
+            </span>
           </div>
 
         </div>
@@ -80,6 +92,10 @@
               type="number"
               id="Quantity"
             >
+            <span class="help-block text-danger" *ngIf="!productForm.get('quantity')?.valid&&productForm.get('quantity')?.touched" >
+              Quantity Must be between 1 to 100000
+            </span>
+
           </div>
 
           <div class="form-group col-5 mt-3">
@@ -90,6 +106,10 @@
               type="number"
               id="Price"
             >
+            <span class="help-block text-danger" *ngIf="!productForm.get('price')?.valid&&productForm.get('price')?.touched" >
+              Quantity Must be between 1 to 10000
+            </span>
+
           </div>
 
         </div>
@@ -101,6 +121,7 @@
             type="text"
             id="Description"
           >
+          <span class="help-block text-danger" *ngIf="!productForm.get('description')?.valid&&productForm.get('description')?.touched" >this feild is Required</span>
         </div >
         <div  class="form-group mt-5 btns">
           <button class="btn btn-primary" [disabled]="!productForm.valid || (this.ImageStatus!== UploadImageStatus.success && !edit)"  type="submit" >Submit</button>

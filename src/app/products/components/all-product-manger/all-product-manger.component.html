@@ -2,12 +2,13 @@
 
 
 
-<div class="cartBox">
+  <ng-container *ngIf="!!Products">
+
+    <div class="cartBox">
 
 
-
-  <h1 class="text-danger">Mange Products</h1>
-  <div class="headCart">
+      <h1 class="text-danger">Mange Products</h1>
+      <div class="headCart">
     <p class="lead">you have <label class="text-danger">{{Products?.length}} </label>
        Product<strong *ngIf="Products!.length>1">s</strong>
     </p>
@@ -70,3 +71,5 @@
 
   </div>
 <!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->
+
+  </ng-container>

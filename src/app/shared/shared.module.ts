@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
+
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -32,7 +34,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NgxPaginationModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+
+
   ],
   exports:[
     HeaderComponent,
@@ -47,6 +51,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatSidenavModule
+
 
   ]
 })

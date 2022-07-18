@@ -9,13 +9,13 @@ import { Product, ProductToCreate } from 'src/app/products/Models/product';
   providedIn: 'root'
 })
 export class SharedService {
-  user = new BehaviorSubject<OrderCradential>(null!);
+  orderCradential = new BehaviorSubject<OrderCradential>(null!);
 
 
   constructor() { }
 
   setOrderDate(model:OrderCradential){
-    this.user.next(model)
+    this.orderCradential.next(model)
   }
 
 
