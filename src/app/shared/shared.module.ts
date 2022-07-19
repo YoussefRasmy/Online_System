@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SelectComponent } from './components/select/select.component';
@@ -13,6 +13,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LanguageSliderComponent } from './components/language-slider/language-slider.component';
 
 
 
@@ -21,7 +24,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     HeaderComponent,
     SpinnerComponent,
     SelectComponent,
-    SidenavComponent
+    SidenavComponent,
+    LanguageSliderComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +39,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    TranslateModule.forRoot({
+      defaultLanguage:'en',
+      loader:{
+        provide:TranslateLoader,
+        useFactory:creatTranslateLoader,
+        deps:[HttpClient]
+
+      }
+    })
 
 
   ],
@@ -50,9 +63,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NgxPaginationModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    TranslateModule,
+    LanguageSliderComponent
 
 
   ]
 })
 export class SharedModule { }
+
+export function creatTranslateLoader(http:HttpClient){
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json')
+}

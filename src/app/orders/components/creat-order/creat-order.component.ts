@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { OrderCradential, OrderService } from '../../service/order.service';
 @Component({
@@ -8,13 +9,18 @@ import { OrderCradential, OrderService } from '../../service/order.service';
   templateUrl: './creat-order.component.html',
   styleUrls: ['./creat-order.component.scss']
 })
-export class CreatOrderComponent implements OnInit {
+export class CreatOrderComponent implements OnInit,OnDestroy {
 
-  constructor(private service:OrderService,private dialogRef:MatDialogRef<CreatOrderComponent>,private sharedService:SharedService) { }
+
+
+  constructor(public translate:TranslateService,private service:OrderService,private dialogRef:MatDialogRef<CreatOrderComponent>,private sharedService:SharedService) { }
 
   ngOnInit(): void {
   }
+  ngOnDestroy(): void {
 
+
+  }
 
 
 
@@ -42,6 +48,7 @@ export class CreatOrderComponent implements OnInit {
     form.reset();
     this.dialogRef.close();
   }
+
 
 
 }

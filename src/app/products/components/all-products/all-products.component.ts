@@ -58,6 +58,8 @@ export class AllProductsComponent implements OnInit {
       //console.log({res});
 
     this.products= res;
+    console.log({allProducts:this.products});
+
     this.getProductsFromCart();
     this.changeFlag();
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './Auth/service/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from './Auth/service/auth.service';
 export class AppComponent implements OnInit {
   title = 'Online_System';
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService,public translate:TranslateService){}
 
 
 

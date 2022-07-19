@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row mt-5">
+    <app-language-slider></app-language-slider>
     <div class="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
       <form [formGroup]="productForm"  (ngSubmit)="onSubmit()">
 
 
         <div class="form-group  mt-3">
           <img *ngIf="edit"  src="{{data.photo}}" alt=""><br>
-          <label for="Photo">Photo</label>
+          <label for="Photo">{{"PHOTO" | translate}}</label>
           <input
           type="file"
           id="Photo"
@@ -15,16 +16,22 @@
           (change)="uploadPhoto($event.target)"
           >
 
-            <label *ngIf="ImageStatus== UploadImageStatus.success">Success</label>
-            <label *ngIf="ImageStatus== UploadImageStatus.pending">Waiting For Image</label>
-            <label *ngIf="ImageStatus== UploadImageStatus.fail">Fail To Upload</label>
+            <label *ngIf="ImageStatus== UploadImageStatus.success">
+              {{"SUCCESS" | translate}}
+            </label>
+            <label *ngIf="ImageStatus== UploadImageStatus.pending">
+              {{"WAITING_FOR_IMAGE" | translate}}
+            </label>
+            <label *ngIf="ImageStatus== UploadImageStatus.fail">
+              {{"FAIL_TO_UPLOAD" | translate}}
+            </label>
 
         </div>
 
         <div style="display:flex ; justify-content:space-between ;">
 
           <div class="form-group col-5 mt-3" style="display:inline-block ;">
-            <label for="Ename"> English Name</label>
+            <label for="Ename">{{"E_NAME" | translate}}</label>
             <input
             class="form-control"
 
@@ -33,12 +40,12 @@
               id="Ename"
             >
             <span class="help-block text-danger" *ngIf="!productForm.get('englishName')?.valid&&productForm.get('englishName')?.touched" >
-              this feild Must be English letter Only
+              {{"E_NAME_ERROR" | translate}}
             </span>
           </div>
 
           <div class="form-group col-5 mt-3" style="display:inline-block ;">
-            <label for="AName">Arapic Name</label>
+            <label for="AName">{{"A_NAME" | translate}}</label>
             <input
             class="form-control"
               type="text"
@@ -46,7 +53,7 @@
               formControlName="arabicName"
             >
             <span class="help-block text-danger" *ngIf="!productForm.get('arabicName')?.valid&&productForm.get('arabicName')?.touched" >
-              this feild Must be Arabic letter Only
+              {{"A_NAME_ERROR" | translate}}
             </span>
           </div>
 
@@ -55,7 +62,7 @@
         <div style="display:flex ; justify-content:space-between ;">
 
           <div class="form-group col-5  mt-3">
-            <label for="Category">Category</label>
+            <label for="Category">{{"CATEGORY" | translate}}</label>
             <select
             class="form-control"
             formControlName="category"
@@ -64,12 +71,12 @@
               <option *ngFor="let item of categoryes" value="{{item.id}}">{{item.name}}</option>
             </select>
             <span class="help-block text-danger" *ngIf="!productForm.get('category')?.valid&&productForm.get('category')?.touched" >
-              this feild is Required
+              {{"REQUIRE_ERROR" | translate}}
             </span>
           </div>
 
           <div class="form-group col-5 mt-3">
-            <label for="Vendor">Vendor</label>
+            <label for="Vendor">{{"VENDOR" | translate}}</label>
             <select
             class="form-control"
             formControlName="Vendor"
@@ -77,7 +84,7 @@
               <option  *ngFor="let item of vendors" value="{{item.id}}">{{item.name}}</option>
             </select>
             <span class="help-block text-danger" *ngIf="!productForm.get('Vendor')?.valid&&productForm.get('Vendor')?.touched" >
-              this feild is Required
+              {{"REQUIRE_ERROR" | translate}}
             </span>
           </div>
 
@@ -85,7 +92,7 @@
         <div style="display:flex ; justify-content:space-between ;">
 
           <div class="form-group col-5 mt-3">
-            <label for="Quantity">Quantity</label>
+            <label for="Quantity">{{"QUANTITY" | translate}}</label>
             <input
               class="form-control"
               formControlName="quantity"
@@ -93,13 +100,13 @@
               id="Quantity"
             >
             <span class="help-block text-danger" *ngIf="!productForm.get('quantity')?.valid&&productForm.get('quantity')?.touched" >
-              Quantity Must be between 1 to 100000
+              {{"QUANTITY_ERROR" | translate}}
             </span>
 
           </div>
 
           <div class="form-group col-5 mt-3">
-            <label for="Price">Price</label>
+            <label for="Price">{{"PRICE" | translate}}</label>
             <input
               class="form-control"
               formControlName="price"
@@ -107,25 +114,28 @@
               id="Price"
             >
             <span class="help-block text-danger" *ngIf="!productForm.get('price')?.valid&&productForm.get('price')?.touched" >
-              Quantity Must be between 1 to 10000
+              {{"PRICE_ERROR" | translate}}
             </span>
 
           </div>
 
         </div>
         <div class="form-group mt-3">
-          <label for="Description">Description</label>
+          <label for="Description">{{"DESCRIPTION" | translate}}</label>
           <input
             class="form-control"
             formControlName="description"
             type="text"
             id="Description"
           >
-          <span class="help-block text-danger" *ngIf="!productForm.get('description')?.valid&&productForm.get('description')?.touched" >this feild is Required</span>
+          <span class="help-block text-danger"
+           *ngIf="!productForm.get('description')?.valid&&productForm.get('description')?.touched" >
+           {{"REQUIRE_ERROR" | translate}}
+          </span>
         </div >
         <div  class="form-group mt-5 btns">
-          <button class="btn btn-primary" [disabled]="!productForm.valid || (this.ImageStatus!== UploadImageStatus.success && !edit)"  type="submit" >Submit</button>
-          <button class="btn btn-success" (click)="onClose()" type="button" >Cancel</button>
+          <button class="btn btn-primary" [disabled]="!productForm.valid || (this.ImageStatus!== UploadImageStatus.success && !edit)"  type="submit" >{{"SUBMIT" | translate}}</button>
+          <button class="btn btn-success" (click)="onClose()" type="button" >{{"CANCEL" | translate}}</button>
         </div>
 
       </form>

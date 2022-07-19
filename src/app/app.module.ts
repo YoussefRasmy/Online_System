@@ -1,4 +1,4 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +20,8 @@ import { CategorysModule } from './categorys/categorys.module';
 import { CategoryFormComponent } from './categorys/component/category-form/category-form.component';
 import { LoginComponent } from './Auth/Component/login/login.component';
 import { SignupComponent } from './Auth/Component/signup/signup.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 //import { JwtModule,JwtHelperService } from "@auth0/angular-jwt";
 
 
@@ -34,25 +36,20 @@ import { SignupComponent } from './Auth/Component/signup/signup.component';
 
   ],
   imports: [
-
-
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    FormsModule,//...........>>>>>>>>>>>>>>>
+    FormsModule,
     HttpClientModule,
     ProductsModule,
-    CartsModule,//...........>>>>>>>>>>>>>>>
+    CartsModule,
     OrdersModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatTableModule,
     CategorysModule,
+
     //JwtModule,
-
-
-
-
   ],
   providers: [
     {

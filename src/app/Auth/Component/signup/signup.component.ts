@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import {  AuthService } from '../../service/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import {  AuthService } from '../../service/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit ,OnDestroy {
 
 
 
@@ -18,7 +19,11 @@ export class SignupComponent implements OnInit {
 
   RegestErerror:string =null!;
 
-  constructor(private authService:AuthService, private router: Router) { }
+  constructor(private authService:AuthService, private router: Router,public translate:TranslateService) { }
+  ngOnDestroy(): void {
+
+
+  }
 
   ngOnInit(): void {
   }

@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { Category } from 'src/app/products/Models/category';
 import { CategoryService } from '../../service/category.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.scss']
 })
-export class CategoryFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit,OnDestroy {
+
 
   categoryForm:FormGroup =new FormGroup({
     'name':new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
@@ -26,10 +28,10 @@ export class CategoryFormComponent implements OnInit {
 
   categoryEditId!:number;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:CategoryService,private dialogRef:MatDialogRef<CategoryFormComponent>) { }
+  constructor(public translate:TranslateService,@Inject(MAT_DIALOG_DATA) public data: any,private service:CategoryService,private dialogRef:MatDialogRef<CategoryFormComponent>) { }
 
   ngOnInit(): void {
-    
+
     this.service.category.subscribe(res=>{
 
       this.service.getAllParentCategory().subscribe((res)=>{
@@ -48,6 +50,11 @@ export class CategoryFormComponent implements OnInit {
 
 
 
+
+
+  }
+
+  ngOnDestroy(): void {
 
 
   }
@@ -90,6 +97,7 @@ export class CategoryFormComponent implements OnInit {
     this.dialogRef.close()
 
   }
+
 
 
 }

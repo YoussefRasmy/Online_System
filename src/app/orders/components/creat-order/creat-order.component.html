@@ -1,6 +1,9 @@
 <div class="row ">
+
+  <app-language-slider></app-language-slider>
+
   <div class="col-xs-12 col-md-6 offset-md-3">
-    <h1>Order Cradential</h1>
+    <h1>{{ "ORDER_CRADENTIAL" | translate}}</h1>
     <!-- <div class="alert alert-danger" *ngIf="LogInerror">
       <p>{{LogInerror}}</p>
     </div> -->
@@ -10,7 +13,7 @@
     <form  #creatOrderForm="ngForm" >
 
       <div class="form-group ">
-        <label for="date">Deliver Date</label>
+        <label for="date">{{ "DELIVER_DATE" | translate}}</label>
         <input type="date"
           id="date"
           class="form-control"
@@ -21,7 +24,7 @@
       </div>
 
       <div class="form-group mt-3">
-        <label for="address"> Address</label>
+        <label for="address">{{ "ADDRESS" | translate}}</label>
         <input
           type="address"
           id="address"
@@ -33,10 +36,10 @@
         />
       </div>
       <div class="form-group mt-3">
-        <label for="paymentMethod"> Payment Method</label>
+        <label for="paymentMethod">{{ "PAYMENT_METHOD" | translate}}</label>
         <select class="m-3" required ngModel name="paymentMethod" id="paymentMethod">
-          <option value="0">Visa</option>
-          <option value="1">On Deliver</option>
+          <option value="0">{{ "VISA" | translate}}</option>
+          <option value="1">{{ "ON_DELIVER" | translate}}</option>
         </select>
       </div>
 
@@ -46,9 +49,9 @@
           type="submit"
           [disabled]="!creatOrderForm.valid"
           (click)="onOrderSubmit(creatOrderForm)"
-        >Make Order</button> |
+        >{{ "MAKE_ORDER" | translate}}</button> |
 
-        <button class="btn btn-primary" (click)="onClose(creatOrderForm)" type="button" >Cancel</button>
+        <button class="btn btn-primary" (click)="onClose(creatOrderForm)" type="button" >{{ "CANCEL" | translate}}</button>
       </div>
     </form>
   </div>

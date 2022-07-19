@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup,ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Product, ProductToCreate } from '../../Models/product';
 import { ProductsService } from '../../service/products.service';
 
@@ -36,7 +37,7 @@ export class ProductFormComponent implements OnInit {
     'description':new FormControl("",[Validators.required])
   })
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private service:ProductsService,private dialogRef:MatDialogRef<ProductFormComponent>) { }
+  constructor(public translate:TranslateService,@Inject(MAT_DIALOG_DATA) public data: any,private service:ProductsService,private dialogRef:MatDialogRef<ProductFormComponent>) { }
 
 categoryes:any[]=[]
 vendors:any[]=[]

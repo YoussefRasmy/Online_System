@@ -1,5 +1,8 @@
 
 <div  class="row mt-5 ">
+
+  <app-language-slider></app-language-slider>
+
   <div class="col-xs-12 col-md-6 offset-md-3">
     <div class="alert alert-danger" *ngIf="LogInerror">
       <p>{{LogInerror}}</p>
@@ -10,7 +13,7 @@
     <form *ngIf="!isLoading" #logInForm="ngForm" (ngSubmit)="onLogInFormSubmit(logInForm)">
 
       <div class="form-group mt-3">
-        <label for="userName">User Name</label>
+        <label for="userName">{{ "USER_NAME" | translate}}</label>
         <input type="text"
           id="userName"
           class="form-control"
@@ -21,7 +24,7 @@
       </div>
 
       <div class="form-group mt-3">
-        <label for="password"> password</label>
+        <label for="password">{{ "PASSWORD" | translate}}</label>
         <input
           type="password"
           id="password"
@@ -39,9 +42,9 @@
           class="btn btn-primary "
           type="submit"
           [disabled]="!logInForm.valid"
-        >Login</button> |
+        >{{ "LOGIN" | translate}}</button> |
 
-        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">Switch to Sign Up</button>
+        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">{{ "SWITCH_TO_SIGN_UP" | translate}}</button>
       </div>
     </form>
   </div>

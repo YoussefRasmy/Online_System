@@ -61,6 +61,9 @@ export class ProductComponent implements OnInit {
       console.log(this.amount);
 
     }
+    else{
+      this.data.quantityInCart = 1
+    }
 
   }
 

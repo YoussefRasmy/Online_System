@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthLogInRespones, AuthService } from '../../service/auth.service';
 // import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -10,14 +11,13 @@ import { AuthLogInRespones, AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   LogingToken!:AuthLogInRespones;
 
   isLoading = false;
   LogInerror:string =null!;
 
 
-  constructor(private authService:AuthService, private router: Router) { }
+  constructor(public translate:TranslateService,private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
