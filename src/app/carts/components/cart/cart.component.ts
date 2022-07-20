@@ -150,20 +150,25 @@ errorFlag = false;
       dialogConfig.autoFocus=true;
       dialogConfig.width="50%";
       dialogConfig.id="dialog"
-      this.dialog.open(CreatOrderComponent,dialogConfig)
-      this.dialog.afterAllClosed.pipe(take(1)).subscribe(()=>{
-
-       // console.log("helloo");
-
+      var orderDialog = this.dialog.open(CreatOrderComponent,dialogConfig)
+      orderDialog.afterClosed().pipe(take(1)).subscribe((res:any)=>{
+          //#1
+        console.log("helloo");
+//subject
         this.sharedService.orderCradential.pipe(take(1)).subscribe((res:OrderCradential)=>{
-          if (res!==null) {
+          //#2
+          console.log("Hello1");
 
-            //console.log("heloow 222222");
+          if (!!res) {//if (res!==null)
+          //#2
+            console.log("heloow 222222");
 
             this.service.SendOrder(res).pipe(take(1)).subscribe((orderId)=>{
               this.router.navigateByUrl('/orderConfirm/'+orderId)
                this.success = true;
                this.clearCart();
+               console.log("hello 33");
+
             },error=>{
               this.errorFlag=true
               this.errorMessage = `${error.error} pleas update your cart`
@@ -172,6 +177,9 @@ errorFlag = false;
           }
 
         })
+
+
+        //
       })
 
     }

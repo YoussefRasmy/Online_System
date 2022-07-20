@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { OrderCradential } from 'src/app/orders/service/order.service';
 import { Product, ProductToCreate } from 'src/app/products/Models/product';
 
@@ -9,7 +9,7 @@ import { Product, ProductToCreate } from 'src/app/products/Models/product';
   providedIn: 'root'
 })
 export class SharedService {
-  orderCradential = new BehaviorSubject<OrderCradential>(null!);
+  orderCradential = new Subject<OrderCradential>();
 
 
   constructor() { }
