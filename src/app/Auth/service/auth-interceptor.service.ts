@@ -16,7 +16,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       take(1),
       exhaustMap((user)=>{
         if (!user) {
-          console.log("there is no user");
+
 
           return next.handle(req);
         }
@@ -33,7 +33,7 @@ export class AuthInterceptorService implements HttpInterceptor {
             'Authorization': `Bearer ${user.token}`,
             // 'Content-Type': 'application/json'
           })})
-          console.log({Tokenreq:user.token});
+
 
         return next.handle(modifiedReq)
       })

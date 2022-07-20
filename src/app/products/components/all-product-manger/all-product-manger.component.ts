@@ -42,7 +42,7 @@ export class AllProductMangerComponent implements OnInit {
   // }
 
   displayedColumns: string[] = ['englishName'];
-  pageSize:number = 10;
+  pageSize:number = 5;
   pageNum:number = 1;
   constructor(private service:ProductsService,private _httpClient: HttpClient,private dialog:MatDialog) { }
 
@@ -60,7 +60,7 @@ export class AllProductMangerComponent implements OnInit {
     this.service.getAllProducts().subscribe((res)=>{
 
       this.Products = res;
-      console.log({res});
+
 
 
     })
@@ -68,6 +68,7 @@ export class AllProductMangerComponent implements OnInit {
 
   editProduct(index:number){
 
+    index = index + ((this.pageNum*this.pageSize)-this.pageSize)
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true;

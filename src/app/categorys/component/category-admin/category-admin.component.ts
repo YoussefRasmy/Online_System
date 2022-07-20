@@ -23,7 +23,7 @@ export class CategoryAdminComponent implements OnInit {
 
 
   onSearch(){
-    console.log(this.searchValue);
+
 
 
     if (this.searchValue != '') {
@@ -45,7 +45,7 @@ export class CategoryAdminComponent implements OnInit {
   getAllCategory(){
     this.service.getAllCategory().subscribe((res:Category[])=>{
       this.allcategories = res
-      console.log(res);
+
 
     })
   }

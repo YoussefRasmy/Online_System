@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
 
 
     //this is for keeping the list updated to whats in the cart
-    console.log({EachProd:this.data});
+
 
     //not cool
     //this.updateList()
@@ -47,15 +47,15 @@ export class ProductComponent implements OnInit {
   //notCool
   // updateList(){
 
-  //  // console.log("Joe 2",this.data);
 
-  //  // console.log(this.data.quantityInCart);
+
+
 
   //   if (!!this.data.quantityInCart) {
-  //    // console.log(+this.data.quantityInCart);
+
 
   //     this.amount = +this.data.quantityInCart
-  //     //console.log(this.amount);
+
 
   //   }
   //   else{
@@ -71,7 +71,7 @@ export class ProductComponent implements OnInit {
       quantity: this.amount
     }
     this.service.addOneProductToCart(product).subscribe(res=>{
-        //console.log(res);
+
 
 
       }, error=>{

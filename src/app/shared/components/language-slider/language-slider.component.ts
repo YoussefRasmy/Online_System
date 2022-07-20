@@ -26,7 +26,7 @@ lang = 'en'
   changeLang(){
     this.lang = this.lang==='en'?'ar':'en';
     this.translate.use(this.lang)
-     console.log(this.lang);
+
 
    }
 

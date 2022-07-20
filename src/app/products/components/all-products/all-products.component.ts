@@ -55,10 +55,10 @@ export class AllProductsComponent implements OnInit {
   getProducts(){
     this.changeFlag();
     this.service.getAllProducts().subscribe((res:Product[])=>{
-      //console.log({res});
+
 
     this.products= res;
-    console.log({prodLenth:res});
+
 
     //this.getProductsFromCart();
     this.changeFlag();
@@ -79,7 +79,7 @@ export class AllProductsComponent implements OnInit {
 
     this.cartService.getUserCart().subscribe((res:RealCartProduct[])=>{
       if (res.length > 0) {
-       // console.log("Helloowoowow");
+
 
         res.forEach(prodInCart => {
 
@@ -104,7 +104,7 @@ export class AllProductsComponent implements OnInit {
   getCategory(){
     this.service.getAllCategory().subscribe((res:any)=>{
       this.categories=res;
-      //console.log({res});
+
 
     }, error=>{
       alert(error.error)
@@ -115,7 +115,7 @@ export class AllProductsComponent implements OnInit {
   let value:any = event.target.value
   value === "all" ? this.getProducts() : this.getProductsByCategory(value);
 
-    //console.log(value);
+
  // this.getPagenation()
 
   }
@@ -136,7 +136,7 @@ export class AllProductsComponent implements OnInit {
 
     this.service.getProductsByName(name).subscribe((res:any)=>{
       this.products = res;
-      //console.log({res});
+
       this.changeFlag();
 
 
@@ -152,7 +152,7 @@ export class AllProductsComponent implements OnInit {
 
     this.service.getProductsByCategoryId(categoryId).subscribe((res:any)=>{
       this.products = res;
-      //console.log({res});
+
       this.changeFlag();
 
 
@@ -190,7 +190,7 @@ export class AllProductsComponent implements OnInit {
   //     localStorage.setItem("cart",JSON.stringify(this.cartProducts))
   //     //API
   //   }
-  //   //console.log(this.cartProducts);
+
   // }
 
 

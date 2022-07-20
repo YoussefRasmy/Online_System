@@ -14,7 +14,7 @@ data!:Product;
 loading:boolean=false;
   constructor(private route:ActivatedRoute, private service:ProductsService) {
     this.id = this.route.snapshot.paramMap.get("id")
-    //console.log(this.id)
+
   }
 
   ngOnInit(): void {

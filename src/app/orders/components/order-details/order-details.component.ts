@@ -30,7 +30,7 @@ export class OrderDetailsComponent implements OnInit {
       this.loading = false
       this.data= res;
 
-      console.log(this.data);
+
 
     })
   }

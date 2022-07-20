@@ -25,7 +25,9 @@ export class CreatOrderComponent implements OnInit,OnDestroy {
 
 
   onOrderSubmit(form:NgForm){
-    //console.log({logIn:form.value});
+
+    console.log("ay 7aga");
+
     if(!form.valid){
       return;
     }
@@ -36,7 +38,7 @@ export class CreatOrderComponent implements OnInit,OnDestroy {
         //deliverDate:form.value.date,
         paymentMethod:form.value.paymentMethod
       }
-//console.log(model);
+
       this.sharedService.setOrderDate(model)
       //this.service.SendOrder(model).subscribe()
       this.onClose(form)

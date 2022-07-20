@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
     if(!form.valid){
       return;
     }
-    //console.log(form.value);
+
     let model =
       {
         username : form.value.userName,
@@ -45,12 +45,12 @@ export class AuthComponent implements OnInit {
 
       this.isLoading = true;
       this.authService.Signup(model).subscribe(res=>{
-        console.log(res);
+
         this.isLoading = false;
         this.onSwitchMode();
       },(error)=>{
         this.isLoading = false;
-        console.log(error);
+
         if (error.status==200) {
           this.onSwitchMode()
           return;
@@ -62,7 +62,7 @@ export class AuthComponent implements OnInit {
   }
 
   onLogInFormSubmit(form:NgForm){
-    console.log({logIn:form.value});
+
     if(!form.valid){
       return;
     }
@@ -72,10 +72,10 @@ export class AuthComponent implements OnInit {
         Password : form.value.password
       }
       localStorage.setItem("userName", model.UserName);
-//console.log(model);
+
       this.isLoading = true;
       this.authService.Login(model).subscribe((res:AuthLogInRespones)=>{
-        console.log(res);
+
         this.LogingToken = res;
         this.isLoading = false;
         this.authService.CurrentUserName.next(model.UserName)
@@ -85,7 +85,7 @@ export class AuthComponent implements OnInit {
         }
         this.router.navigate(['/products'])
       },error=>{
-        console.log(error);
+
         this.LogInerror = 'An error occured';
         this.isLoading = false;
       })

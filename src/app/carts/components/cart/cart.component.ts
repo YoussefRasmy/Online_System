@@ -47,7 +47,7 @@ errorFlag = false;
   //   if("cart" in localStorage){
   //     this.cartProducts = JSON.parse(localStorage.getItem("cart")!)
   //   }
-  //   //console.log(this.cartProducts,this.total);
+
   //   this.getCartTotal()
   // }
 
@@ -76,7 +76,7 @@ errorFlag = false;
 
 
   RemoveFromCart(index:number){
-    console.log({ProductId:this.cartProducts[index]._Product.id});
+
 
     this.service.deleteOneFromCart(this.cartProducts[index]._Product.id).subscribe()
     this.cartProducts.splice(index,1)
@@ -106,7 +106,7 @@ errorFlag = false;
     })
 
     this.service.addToUserCart(products).subscribe(res=>{
-      //console.log(res);
+
 
 
     }, error=>{
@@ -120,10 +120,10 @@ errorFlag = false;
     this.errorFlag = false;
 
     this.cartProducts.forEach((product:RealCartProduct)=>{
-      
+
       if (product.quantity>product._Product.quantity) {
 
-        //console.log("canot make order");
+
 
         _error += `${product._Product.englishName} inventory is less\t then your request there is only ${product._Product.quantity} peace of it\n\n`;
         // this.errorMessage =
@@ -152,10 +152,14 @@ errorFlag = false;
       dialogConfig.id="dialog"
       this.dialog.open(CreatOrderComponent,dialogConfig)
       this.dialog.afterAllClosed.pipe(take(1)).subscribe(()=>{
-      //  console.log("hi this is joe");
-        this.sharedService.orderCradential.subscribe(  (res:OrderCradential)=>{
+
+       // console.log("helloo");
+
+        this.sharedService.orderCradential.subscribe((res:OrderCradential)=>{
           if (res!==null) {
-            //console.log(res);
+
+            //console.log("heloow 222222");
+
             this.service.SendOrder(res).subscribe((orderId)=>{
               this.router.navigateByUrl('/orderConfirm/'+orderId)
                this.success = true;
@@ -163,12 +167,12 @@ errorFlag = false;
             },error=>{
               this.errorFlag=true
               this.errorMessage = `${error.error} pleas update your cart`
-              console.log(error.error);
-            })
+
+            }).unsubscribe()
           }
 
-        })
-      })
+        }).unsubscribe()
+      }).unsubscribe()
 
     }
 

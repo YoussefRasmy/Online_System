@@ -67,14 +67,14 @@ export class CategoryFormComponent implements OnInit,OnDestroy {
       parentCategoryId:this.categoryForm.get('parentCategoryId')!.value,
 
     }
-    console.log({Category:model});
 
-    console.log(this.isEdit);
+
+
 
     if (this.isEdit) {
 
       this.isEdit = false;
-      console.log(this.isEdit);
+
       this.service.updateCategory(this.categoryEditId,model).subscribe(()=>{
         this.isEdit = false;
       })

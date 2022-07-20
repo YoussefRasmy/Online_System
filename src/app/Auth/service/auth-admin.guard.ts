@@ -14,14 +14,14 @@ export class AuthAdminGuard implements CanActivate {
       return this.authService.user.pipe(
         take(1),
         map(user=>{
-          //console.log("helloooowwwwo");
+
 
           return user.role ==='Admin'
         }),
         tap(isAdmin=>{
           if (!isAdmin) {
 
-           // console.log({AuthAdmin:isAdmin});
+
 
             this.router.navigate(["/products"])
 

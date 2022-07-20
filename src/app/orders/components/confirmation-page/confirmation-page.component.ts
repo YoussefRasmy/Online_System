@@ -29,7 +29,7 @@ export class ConfirmationPageComponent implements OnInit {
       this.loading = false
       this.data= res;
 
-      console.log(this.data);
+
 
     })
   }

@@ -52,7 +52,7 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }//ExpirationDate
   autoLogout(expirationDuration:number){
-    //console.log(expirationDuration);
+
 
    this.tokenExpirationTimer = setTimeout(()=>{
       this.Logout();
@@ -64,7 +64,7 @@ export class AuthService {
   Login(model:any){
     return this.http.post<AuthLogInRespones>(environment.baseApi+'User/login', model)
     .pipe(tap(res=>{
-      //console.log({LoginRes: res});//token is correct
+
 
       const expirationDate = new Date(res.expiryDate)
 
@@ -72,7 +72,7 @@ export class AuthService {
       const userRole = tokenDecoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
       const user = new User(res.token,expirationDate,userRole)
 
-      console.log( {user: user});
+
 
       const expirationDuration  = expirationDate.getTime() -new Date().getTime();
 

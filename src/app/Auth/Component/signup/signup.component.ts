@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit ,OnDestroy {
     if(!form.valid){
       return;
     }
-    //console.log(form.value);
+
     let model =
       {
         username : form.value.userName,
@@ -51,12 +51,12 @@ export class SignupComponent implements OnInit ,OnDestroy {
 
       this.isLoading = true;
       this.authService.Signup(model).subscribe(res=>{
-        console.log(res);
+
         this.isLoading = false;
         this.onSwitchMode();
       },(error)=>{
         this.isLoading = false;
-        console.log(error);
+
         if (error.status==200||error.status == 201) {
           this.onSwitchMode()
           return;

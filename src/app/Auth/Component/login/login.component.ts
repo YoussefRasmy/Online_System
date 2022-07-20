@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
 
   onLogInFormSubmit(form:NgForm){
-    console.log({logIn:form.value});
+
     if(!form.valid){
       return;
     }
@@ -42,12 +42,12 @@ export class LoginComponent implements OnInit {
         Password : form.value.password
       }
       localStorage.setItem("userName", model.UserName);
-//console.log(model);
+
       this.isLoading = true;
       this.authService.Login(model).subscribe((res:AuthLogInRespones)=>{
         const token = this.authService.getDecodedAccessToken(res.token)
        const userRole = token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
-        console.log(res);
+
         this.LogingToken = res;
         this.isLoading = false;
         this.authService.CurrentUserName.next(model.UserName)
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         }
         this.router.navigate(['/products'])
       },error=>{
-        console.log(error);
+
         this.LogInerror = error.error
         this.isLoading = false;
       })

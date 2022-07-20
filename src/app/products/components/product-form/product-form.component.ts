@@ -67,14 +67,14 @@ photoSrc!:string;
 
         this.edit = true
         this.productId = +res.id!
-        console.log(res);
+
 
       }
 
     })
 
 
-//console.log(this.data);
+
 
 
 
@@ -97,10 +97,10 @@ photoSrc!:string;
       description : this.productForm.get('description')!.value
     }
 
-    //console.log({modelBeforSending:model});
+
 
     if (this.edit) {
-      //console.log(this.productId);
+
 
       this.service.updateProduct(model,this.productId).subscribe();
       this.onClose()
@@ -109,7 +109,7 @@ photoSrc!:string;
     }
 
     // this.service.getTheImage(model.imagePath).subscribe(res=>{
-    //   console.log(res);
+
 
     // })
     this.service.addProduct(model).subscribe()
