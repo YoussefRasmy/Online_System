@@ -46,9 +46,6 @@ export class LoginComponent implements OnInit {
       this.isLoading = true;
       this.authService.Login(model).subscribe((res:AuthLogInRespones)=>{
         const token = this.authService.getDecodedAccessToken(res.token)
-
-        // console.log({TOKEN:token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]});
-
        const userRole = token["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
         console.log(res);
         this.LogingToken = res;

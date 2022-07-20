@@ -25,9 +25,11 @@ export class AuthService {
   private tokenExpirationTimer:any;
   constructor(private http:HttpClient,private router:Router) { }
 //Register
+
   Signup(model:any){
     return this.http.post(environment.baseApi+'User/regester', model)
   }
+
 
   getDecodedAccessToken(token: string): any {
     try {
