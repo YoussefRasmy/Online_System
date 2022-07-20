@@ -155,12 +155,12 @@ errorFlag = false;
 
        // console.log("helloo");
 
-        this.sharedService.orderCradential.subscribe((res:OrderCradential)=>{
+        this.sharedService.orderCradential.pipe(take(1)).subscribe((res:OrderCradential)=>{
           if (res!==null) {
 
             //console.log("heloow 222222");
 
-            this.service.SendOrder(res).subscribe((orderId)=>{
+            this.service.SendOrder(res).pipe(take(1)).subscribe((orderId)=>{
               this.router.navigateByUrl('/orderConfirm/'+orderId)
                this.success = true;
                this.clearCart();
@@ -168,11 +168,11 @@ errorFlag = false;
               this.errorFlag=true
               this.errorMessage = `${error.error} pleas update your cart`
 
-            }).unsubscribe()
+            })
           }
 
-        }).unsubscribe()
-      }).unsubscribe()
+        })
+      })
 
     }
 
