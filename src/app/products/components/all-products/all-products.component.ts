@@ -29,7 +29,7 @@ export class AllProductsComponent implements OnInit {
     products:[],
     count : 0
   }
-  pageSize:number = 3;
+  pageSize:number = 5;
   pageNum:number = 1;
   constructor(private service:ProductsService,private authService:AuthService,private cartService:CartsService,private changeRef:ApplicationRef) { }
 
@@ -58,9 +58,9 @@ export class AllProductsComponent implements OnInit {
       //console.log({res});
 
     this.products= res;
-    console.log({allProducts:this.products});
+    console.log({prodLenth:res});
 
-    this.getProductsFromCart();
+    //this.getProductsFromCart();
     this.changeFlag();
 
 
@@ -79,24 +79,22 @@ export class AllProductsComponent implements OnInit {
 
     this.cartService.getUserCart().subscribe((res:RealCartProduct[])=>{
       if (res.length > 0) {
-        console.log("Helloowoowow");
+       // console.log("Helloowoowow");
 
         res.forEach(prodInCart => {
 
           this.products.forEach(product=>{
             if (product.id===prodInCart._Product.id) {
                product.quantityInCart=prodInCart.quantity;
-               console.log("joe",product.englishName);
 
             }
           })
         });
-        this.products.pop()
-        console.log("{Products:this.products}");
+
 
       }
     },error=>{
-      alert(error.error)
+      // alert(error.error)
     })
 
   }
@@ -106,7 +104,7 @@ export class AllProductsComponent implements OnInit {
   getCategory(){
     this.service.getAllCategory().subscribe((res:any)=>{
       this.categories=res;
-      console.log({res});
+      //console.log({res});
 
     }, error=>{
       alert(error.error)
@@ -138,7 +136,7 @@ export class AllProductsComponent implements OnInit {
 
     this.service.getProductsByName(name).subscribe((res:any)=>{
       this.products = res;
-      console.log({res});
+      //console.log({res});
       this.changeFlag();
 
 
@@ -154,7 +152,7 @@ export class AllProductsComponent implements OnInit {
 
     this.service.getProductsByCategoryId(categoryId).subscribe((res:any)=>{
       this.products = res;
-      console.log({res});
+      //console.log({res});
       this.changeFlag();
 
 

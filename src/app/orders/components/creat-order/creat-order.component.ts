@@ -33,7 +33,7 @@ export class CreatOrderComponent implements OnInit,OnDestroy {
       {
 
         deliveryAddress:form.value.address,
-        deliverDate:form.value.date,
+        //deliverDate:form.value.date,
         paymentMethod:form.value.paymentMethod
       }
 //console.log(model);

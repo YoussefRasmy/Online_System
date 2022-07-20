@@ -6,7 +6,7 @@ import { Order } from '../Models/Order';
 
 export interface OrderCradential{
   deliveryAddress:string,
-  deliverDate:Date
+  //deliverDate:Date
   paymentMethod:number
 }
 

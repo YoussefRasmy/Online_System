@@ -36,8 +36,6 @@ getAllVendors(){
   }
 
   getProductsByName(keyword:string){
-
-
     return this.http.get(environment.baseApi+'Product/byname?enName='+keyword)
   }
 
@@ -52,12 +50,6 @@ getAllVendors(){
   addProduct(model:any){
     return this.http.post(environment.baseApi+'Product', model)
   }
-
-
-  // pagenationService(pageNum:number,pageSize:number,categoryId:number){
-
-  //   return this.http.get<PagenationDTO>(environment.baseApi+'Product/pagination/'+pageNum+'/'+pageSize+'/'+categoryId)
-  // }
 
 
   uploadImage(file:File){
@@ -79,7 +71,5 @@ getAllVendors(){
     this.product.next(model);
   }
 
-
-
-
+  
 }

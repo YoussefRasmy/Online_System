@@ -42,10 +42,9 @@ export class AllProductMangerComponent implements OnInit {
   // }
 
   displayedColumns: string[] = ['englishName'];
-  pageSize:number = 5;
+  pageSize:number = 10;
   pageNum:number = 1;
   constructor(private service:ProductsService,private _httpClient: HttpClient,private dialog:MatDialog) { }
-
 
   Products!:Product[];
 
@@ -61,6 +60,8 @@ export class AllProductMangerComponent implements OnInit {
     this.service.getAllProducts().subscribe((res)=>{
 
       this.Products = res;
+      console.log({res});
+
 
     })
   }

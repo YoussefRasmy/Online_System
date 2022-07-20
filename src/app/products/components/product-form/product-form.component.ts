@@ -45,7 +45,7 @@ vendors:any[]=[]
 edit:boolean = false;
 
 productId=0;
-
+photoSrc!:string;
   ngOnInit(): void {
 
     this.service.getAllCategory().subscribe((res:any)=>{
@@ -62,6 +62,9 @@ productId=0;
 
       if (res!=null) {
         this.productForm.patchValue(this.data)
+
+        this.photoSrc =this.data.photo;
+
         this.edit = true
         this.productId = +res.id!
         console.log(res);
@@ -131,6 +134,7 @@ productId=0;
       this.ImageStatus = UploadImageStatus.success
 
       this.productForm.patchValue({photo:res.url})
+      this.photoSrc = res.url;
 
     },(err)=>{
       this.ImageStatus = UploadImageStatus.fail

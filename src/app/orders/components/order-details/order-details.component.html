@@ -44,12 +44,9 @@
             <th> Pic </th>
             <th>Product Name</th>
             <th>Quantity</th>
+            <th>Unit Price</th>
             <th>Total Price</th>
-              <!-- <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th> -->
+
           </tr>
         </thead>
         <tbody>
@@ -60,15 +57,12 @@
               <td>{{item.productName}}</td>
               <td>{{item.quantity}}</td>
               <td>{{item.price}}</td>
-              <!-- <td></td>
-              <td></td>
-              <td></td> -->
+              <td>{{item.price*item.quantity}}</td>
+              
             </ng-container>
             <td>
-              <!-- <button class="btn btn-success" (click)="editProduct(index)" >Edit</button> -->
             </td>
             <td>
-              <!-- <button class="btn btn-danger" (click)="deleteProduct(index)" >Delete</button> -->
             </td>
           </tr>
         </tbody>
@@ -80,13 +74,12 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </tfoot>
       </table>
 
-    <!-- </form> -->
 
     </div>
-  <!-- <div class="alert alert-success"  role="alert" ><strong>Well done</strong>Your Order is Successfully send</div> -->
 
 </ng-container>

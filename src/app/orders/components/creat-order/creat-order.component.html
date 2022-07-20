@@ -4,15 +4,12 @@
 
   <div class="col-xs-12 col-md-6 offset-md-3">
     <h1>{{ "ORDER_CRADENTIAL" | translate}}</h1>
-    <!-- <div class="alert alert-danger" *ngIf="LogInerror">
-      <p>{{LogInerror}}</p>
-    </div> -->
+
     <div style="text-align:center ;" >
-      <!-- <app-spinner *ngIf="isLoading"></app-spinner> -->
     </div>
     <form  #creatOrderForm="ngForm" >
 
-      <div class="form-group ">
+      <!-- <div class="form-group ">
         <label for="date">{{ "DELIVER_DATE" | translate}}</label>
         <input type="date"
           id="date"
@@ -21,7 +18,7 @@
           ngModel
           name="date"
         />
-      </div>
+      </div> -->
 
       <div class="form-group mt-3">
         <label for="address">{{ "ADDRESS" | translate}}</label>
@@ -37,7 +34,7 @@
       </div>
       <div class="form-group mt-3">
         <label for="paymentMethod">{{ "PAYMENT_METHOD" | translate}}</label>
-        <select class="m-3" required ngModel name="paymentMethod" id="paymentMethod">
+        <select class=" form-control" required ngModel name="paymentMethod" id="paymentMethod">
           <option value="0">{{ "VISA" | translate}}</option>
           <option value="1">{{ "ON_DELIVER" | translate}}</option>
         </select>

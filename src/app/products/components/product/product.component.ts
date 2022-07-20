@@ -12,19 +12,19 @@ export class ProductComponent implements OnInit {
   @Input() data!:Product;
   addbutton:boolean = false;
   isAuthenticated = false;
- // @Output() item = new EventEmitter();
   amount:number = 1;
   TotalPrice:any;
   constructor(private service:ProductsService,private authService:AuthService) { }
 
   ngOnInit(): void {
-    //console.log({inventory:this.data.quantity});
+
 
 
     //this is for keeping the list updated to whats in the cart
-    console.log(this.data);
+    console.log({EachProd:this.data});
 
-    this.updateList()
+    //not cool
+    //this.updateList()
 
     this.TotalPrice = 1
     this.authService.user.subscribe(user=>{
@@ -33,11 +33,7 @@ export class ProductComponent implements OnInit {
     })
 
   }
-  //no use for it any more cuz I send the data to the api direct no need to save it in the local any more
-  //however i need to understand the event emmitter and the input and output
-  // add(){
-  //   this.item.emit({item:this.data,Quantity:this.amount});
-  // }
+
 
 
   subtractAmount(){
@@ -48,24 +44,25 @@ export class ProductComponent implements OnInit {
     this.amount++
   }
 
-  updateList(){
+  //notCool
+  // updateList(){
 
-    console.log("Joe 2",this.data);
+  //  // console.log("Joe 2",this.data);
 
-    console.log(this.data.quantityInCart);
+  //  // console.log(this.data.quantityInCart);
 
-    if (!!this.data.quantityInCart) {
-      console.log(+this.data.quantityInCart);
+  //   if (!!this.data.quantityInCart) {
+  //    // console.log(+this.data.quantityInCart);
 
-      this.amount = +this.data.quantityInCart
-      console.log(this.amount);
+  //     this.amount = +this.data.quantityInCart
+  //     //console.log(this.amount);
 
-    }
-    else{
-      this.data.quantityInCart = 1
-    }
+  //   }
+  //   else{
+  //     this.data.quantityInCart = 1
+  //   }
 
-  }
+  // }
 
 
   addToCart(){

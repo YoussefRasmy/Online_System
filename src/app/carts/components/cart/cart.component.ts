@@ -120,8 +120,7 @@ errorFlag = false;
     this.errorFlag = false;
 
     this.cartProducts.forEach((product:RealCartProduct)=>{
-      //console.log({inventory:product._Product.quantity});
-      //console.log({requestAmount:product.quantity});
+      
       if (product.quantity>product._Product.quantity) {
 
         //console.log("canot make order");
