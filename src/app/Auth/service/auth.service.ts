@@ -30,37 +30,6 @@ export class AuthService {
     return this.http.post(environment.baseApi+'User/regester', model)
   }
 
-
-  getDecodedAccessToken(token: string): any {
-    try {
-      return jwt_decode(token);
-    } catch(Error) {
-      return null;
-    }
-  }
-
-
-
-
-  Logout(){
-    this.user.next(null!)
-    this.router.navigate(["/login"])
-    localStorage.removeItem('userData');
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-    this.tokenExpirationTimer = null;
-  }//ExpirationDate
-  autoLogout(expirationDuration:number){
-
-
-   this.tokenExpirationTimer = setTimeout(()=>{
-      this.Logout();
-      }, expirationDuration
-    )
-  }
-
-
   Login(model:any){
     return this.http.post<AuthLogInRespones>(environment.baseApi+'User/login', model)
     .pipe(tap(res=>{
@@ -86,6 +55,39 @@ export class AuthService {
     }))
   }
 
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
+
+
+
+
+  Logout(){
+    this.user.next(null!)
+    this.router.navigate(["/login"])
+    localStorage.removeItem('userData');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }//ExpirationDate
+  
+  autoLogout(expirationDuration:number){
+
+
+   this.tokenExpirationTimer = setTimeout(()=>{
+      this.Logout();
+      }, expirationDuration
+    )
+  }
+
+
+
   autoLogin(){
     const userData:{
       _token : string,
@@ -100,6 +102,7 @@ export class AuthService {
       const expirationDuration  = new Date(userData._tokenExpirationDate).getTime() -new Date().getTime() ;
       this.user.next(loadedUser);
       this.autoLogout(expirationDuration)
+
     }
   }
 }

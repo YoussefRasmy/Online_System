@@ -52,6 +52,7 @@ export class CategoryAdminComponent implements OnInit {
 
   editcategory(index:number){
 
+    //index = index + ((this.pageNum*this.pageSize)-this.pageSize)
     this.service.category.next(this.allcategories[index]);
 
     const dialogConfig = new MatDialogConfig();

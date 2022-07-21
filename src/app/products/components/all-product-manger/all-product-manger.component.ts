@@ -106,6 +106,7 @@ export class AllProductMangerComponent implements OnInit {
   }
 
   deleteProduct(index:number){
+    index = index + ((this.pageNum*this.pageSize)-this.pageSize)
     this.service.deleteProduct(+this.Products[index].id).subscribe(()=>{
     this.Products= this.Products.filter(x=>x.id !== this.Products[index].id)
   });
