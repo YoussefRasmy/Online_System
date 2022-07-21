@@ -121,17 +121,9 @@ errorFlag = false;
 
     this.cartProducts.forEach((product:RealCartProduct)=>{
 
-      if (product.quantity>product._Product.quantity) {
-
-
-
+      if (product.quantity > product._Product.quantity) {
         _error += `${product._Product.englishName} inventory is less\t then your request there is only ${product._Product.quantity} peace of it\n\n`;
-        // this.errorMessage =
-
         this.errorFlag = true
-
-
-
       }
     })
 
@@ -143,7 +135,6 @@ errorFlag = false;
 
 
     if (!this.errorFlag) {
-
 
       const dialogConfig = new MatDialogConfig();
       // dialogConfig.disableClose=true;
@@ -178,8 +169,6 @@ errorFlag = false;
 
         })
 
-
-        //
       })
 
     }
